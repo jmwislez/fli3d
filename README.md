@@ -21,7 +21,7 @@ The Fli3d payload has roughly the size of a toilet paper roll, and weighs less t
   - a 240 mAh Li-ION battery for standalone autonomy of 20 (TBC) minutes, with 134N3P charger for tethered operation or pre-launch charging
   - separation detection, for detection of opening of parachute compartment
   
-All flight data is to be monitored live on a ground computer, and to be retrievable after flight, both physically and through file transfer.
+All flight data is to be monitored live on a ground computer running Yamcs (open source software developed for ISS payload and satellite operations), and to be retrievable after flight, both physically and through file transfer.
 
 ## Flights
 
