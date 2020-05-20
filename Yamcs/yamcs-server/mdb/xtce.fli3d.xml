@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="fli3d" 
+    xmlns="http://www.omg.org/space/xtce" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
+    <TelemetryMetaData>
+        <ParameterTypeSet>
+            <AggregateParameterType name="CCSDS_Packet_ID_Type">
+                <MemberList>
+                    <Member name="Version" typeRef="CCSDSVersionType" />
+                    <Member name="Type" typeRef="CCSDSTypeType" />
+                    <Member name="SecHdrFlag" typeRef="CCSDSSecHdrFlagType" />
+                    <Member name="APID" typeRef="CCSDSAPIDType" />
+                </MemberList>
+            </AggregateParameterType>
+            <AggregateParameterType name="CCSDS_Packet_Sequence_Type">
+                <MemberList>
+                    <Member name="GroupFlags" typeRef="CCSDSGroupFlagsType" />
+                    <Member name="Count" typeRef="CCSDSSourceSequenceCountType" />
+                </MemberList>
+            </AggregateParameterType>
+            <IntegerParameterType name="CCSDSVersionType" signed="false" initialValue="0">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="3" />
+            </IntegerParameterType>
+            <BooleanParameterType name="CCSDSTypeType" zeroStringValue="TM" oneStringValue="TC">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="1" />
+            </BooleanParameterType>
+            <BooleanParameterType name="CCSDSSecHdrFlagType" zeroStringValue="NotPresent" oneStringValue="Present">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="1" />
+            </BooleanParameterType>
+            <IntegerParameterType name="CCSDSAPIDType" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="11" />
+            </IntegerParameterType>
+            <EnumeratedParameterType name="CCSDSGroupFlagsType" initialValue="Standalone">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="2" />
+                <EnumerationList>
+                    <Enumeration value="0" label="Continuation" />
+                    <Enumeration value="1" label="First" />
+                    <Enumeration value="2" label="Last" />
+                    <Enumeration value="3" label="Standalone" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <IntegerParameterType name="CCSDSSourceSequenceCountType" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="14" />
+            </IntegerParameterType>
+            <IntegerParameterType name="CCSDSPacketLengthType" signed="false">
+                <UnitSet>
+                    <Unit description="Size">Octets</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="16" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint32_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint24_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="24" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int16_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint16_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint4_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="4" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int8_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>
+            <FloatParameterType name="float_t">
+                <UnitSet />
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_pressure_t">
+                <UnitSet>
+                    <Unit description="Unit">mbar</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_distance_t">
+                <UnitSet>
+                    <Unit description="Unit">m</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_velocity_t">
+                <UnitSet>
+                    <Unit description="Unit">m/s</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_temperature_t">
+                <UnitSet>
+                    <Unit description="Unit">°C</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_accel_t">
+                <UnitSet>
+                    <Unit description="Unit">m/s²</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_rotation_t">
+                <UnitSet>
+                    <Unit description="Unit">°/s</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <FloatParameterType name="float_angle_t">
+                <UnitSet>
+                    <Unit description="Unit">°</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <BooleanParameterType name="bool_t">
+                <UnitSet />
+                <IntegerDataEncoding sizeInBits="1" />
+            </BooleanParameterType>
+            <StringParameterType name="string_t">
+                <UnitSet />
+                <StringDataEncoding encoding="UTF-8">
+                    <SizeInBits>
+                         <TerminationChar>00</TerminationChar>
+                    </SizeInBits>
+                </StringDataEncoding>
+            </StringParameterType>
+            <IntegerParameterType name="uint24_rate_t" signed="false">
+                <UnitSet>
+                    <Unit description="Frequency">Hz</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="24" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_rate_t" signed="false">
+                <UnitSet>
+                    <Unit description="Frequency">Hz</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_distance_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">m</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int8_temperature_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">°C</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int8_velocity_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_velocity_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">m/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int8_accel_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m/s²</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_accel_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">m/s²</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_angle_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">°</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_rotation_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">°/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="8" />
+            </IntegerParameterType>
+            <EnumeratedParameterType name="uint8_opsmode_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration value="0" label="init" />
+                    <Enumeration value="1" label="checkout" />
+                    <Enumeration value="2" label="ready" />
+                    <Enumeration value="3" label="thrust" />
+                    <Enumeration value="4" label="freefall" />
+                    <Enumeration value="5" label="parachute" />
+                    <Enumeration value="6" label="static" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_opsmode_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="init" />
+                    <Enumeration value="1" label="checkout" />
+                    <Enumeration value="2" label="ready" />
+                    <Enumeration value="3" label="thrust" />
+                    <Enumeration value="4" label="freefall" />
+                    <Enumeration value="5" label="parachute" />
+                    <Enumeration value="6" label="static" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_cammode_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="init" />
+                    <Enumeration value="1" label="idle" />
+                    <Enumeration value="2" label="single" />
+                    <Enumeration value="3" label="stream" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_resolution_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="160x120" />
+                    <Enumeration value="1" label="invalid1" />
+                    <Enumeration value="2" label="invalid2" />
+                    <Enumeration value="3" label="240x176" />
+                    <Enumeration value="4" label="320x240" />
+                    <Enumeration value="5" label="400x300" />
+                    <Enumeration value="6" label="640x480" />
+                    <Enumeration value="7" label="800x600" />
+                    <Enumeration value="8" label="1024x768" />
+                    <Enumeration value="9" label="1280x1024" />
+                    <Enumeration value="10" label="1600x1200" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_gpsstatus_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="none" />
+                    <Enumeration value="1" label="est" />
+                    <Enumeration value="2" label="time_only" />
+                    <Enumeration value="3" label="standard" />
+                    <Enumeration value="4" label="differential" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_event_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="init" />
+                    <Enumeration value="1" label="info" />
+                    <Enumeration value="2" label="warning" />
+                    <Enumeration value="3" label="error" />
+                    <Enumeration value="4" label="debug" />
+                    <Enumeration value="5" label="cmd" />
+                    <Enumeration value="6" label="response" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint4_subsystem_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="esp32" />
+                    <Enumeration value="1" label="esp32cam" />
+                    <Enumeration value="2" label="ov2640" />
+                    <Enumeration value="3" label="neo6mv2" />
+                    <Enumeration value="4" label="mpu6050" />
+                    <Enumeration value="5" label="bmp280" />
+                    <Enumeration value="6" label="radio" />
+                    <Enumeration value="7" label="sd" />
+                    <Enumeration value="8" label="separation" />
+                    <Enumeration value="9" label="timer" />
+                    <Enumeration value="10" label="esp32_wifi" />
+                    <Enumeration value="11" label="esp32cam_wifi" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+        </ParameterTypeSet>
+        <AlgorithmSet>
+           <CustomAlgorithm name="sts_esp32_event">
+             <AlgorithmText language="JavaScript"><![CDATA[
+               Yamcs.warning(message.value);
+             ]]></AlgorithmText>
+             <InputSet>
+               <InputParameterInstanceRef parameterRef="STSESP32_message" inputName="message" />
+             </InputSet>
+             <TriggerSet>
+               <OnParameterUpdateTrigger parameterRef="STSESP32_packet_ctr" />
+             </TriggerSet>
+           </CustomAlgorithm>
+           <CustomAlgorithm name="tm_esp32_err_serial_dataloss">
+             <AlgorithmText language="JavaScript"><![CDATA[
+               var wasSerDataLoss;
+               var serDataLoss = err_serial_dataloss.value;
+               if (wasSerDataLoss !== undefined) {
+                 if (serDataLoss && !wasSerDataLoss) {
+                   Yamcs.distress('Data loss on serial connection'); 
+                 } else if (!serDataLoss && wasSerDataLoss) {
+                   Yamcs.info('End of data loss on serial connection');
+                 }
+               }
+               wasSerDataLoss = serDataLoss;
+             ]]></AlgorithmText>
+             <InputSet>
+               <InputParameterInstanceRef parameterRef="ESP32_err_serial_dataloss" inputName="err_serial_dataloss" />
+             </InputSet>
+             <TriggerSet>
+               <OnParameterUpdateTrigger parameterRef="ESP32_err_serial_dataloss" />
+             </TriggerSet>
+           </CustomAlgorithm>
+        </AlgorithmSet>
+        <ParameterSet>
+            <Parameter name="CCSDS_Packet_ID" parameterTypeRef="CCSDS_Packet_ID_Type" />
+            <Parameter name="CCSDS_Packet_Sequence" parameterTypeRef="CCSDS_Packet_Sequence_Type" />
+            <Parameter name="CCSDS_Packet_Length" parameterTypeRef="CCSDSPacketLengthType" />
+      
+            <Parameter name="STSESP32_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="STSESP32_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="STSESP32_type" parameterTypeRef="uint4_event_t" />
+            <Parameter name="STSESP32_subsystem" parameterTypeRef="uint4_subsystem_t" />
+            <Parameter name="STSESP32_message" parameterTypeRef="string_t" />
+        
+            <Parameter name="STSESP32CAM_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="STSESP32CAM_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="STSESP32CAM_type" parameterTypeRef="uint4_event_t" />
+            <Parameter name="STSESP32CAM_subsystem" parameterTypeRef="uint4_subsystem_t" />
+            <Parameter name="STSESP32CAM_message" parameterTypeRef="string_t" />
+        
+            <Parameter name="ESP32_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="ESP32_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="ESP32_opsmode" parameterTypeRef="uint4_opsmode_t" />
+            <Parameter name="ESP32_free" parameterTypeRef="uint4_t" />
+            <Parameter name="ESP32_error_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_warning_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_tc_exec_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_tc_fail_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_radio_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_pressure_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_motion_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_gps_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_camera_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_timer_rate" parameterTypeRef="uint24_rate_t" />
+            <Parameter name="ESP32_udp_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_yamcs_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_serial_in_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_serial_out_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_udp_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_yamcs_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_mem_free" parameterTypeRef="uint32_t" />
+            <Parameter name="ESP32_radio_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_pressure_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_motion_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_gps_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_camera_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_wifi_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_wifi_udp_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_wifi_yamcs_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_warn_serial_connloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_warn_wifi_connloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_err_serial_dataloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_err_udp_dataloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_err_yamcs_dataloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_12" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_11" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_10" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_radio_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_pressure_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_motion_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_gps_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_camera_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_serial_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_wifi_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_separation_sts" parameterTypeRef="bool_t" />
+
+            <Parameter name="ESP32CAM_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="ESP32CAM_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="ESP32CAM_error_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_warning_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_tc_exec_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_tc_fail_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_timer_rate" parameterTypeRef="uint24_rate_t" />
+            <Parameter name="ESP32CAM_udp_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_yamcs_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_serial_in_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_serial_out_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_sd_json_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_sd_ccsds_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_cam_image_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_udp_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_yamcs_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_sd_json_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_sd_ccsds_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_mem_free" parameterTypeRef="uint32_t" />
+            <Parameter name="ESP32CAM_sd_free" parameterTypeRef="uint32_t" />
+            <Parameter name="ESP32CAM_sd_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_json_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_ccsds_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_wifi_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_wifi_udp_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_wifi_yamcs_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_wifi_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_camera_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_camera_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_wifi_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_serial_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_12" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_11" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_10" parameterTypeRef="bool_t" />
+
+            <Parameter name="CAMERA_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="CAMERA_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="CAMERA_camera_mode" parameterTypeRef="uint4_cammode_t" />
+            <Parameter name="CAMERA_resolution" parameterTypeRef="uint4_resolution_t" />
+            <Parameter name="CAMERA_filesize" parameterTypeRef="uint24_t" />
+            <Parameter name="CAMERA_wifi_ms" parameterTypeRef="uint8_t" />
+            <Parameter name="CAMERA_sd_ms" parameterTypeRef="uint8_t" />
+            <Parameter name="CAMERA_exposure_ms" parameterTypeRef="uint8_t" />
+            <Parameter name="CAMERA_auto_res" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_06" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_05" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_04" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_03" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_02" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_01" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_free_00" parameterTypeRef="bool_t" />
+            <Parameter name="CAMERA_filename" parameterTypeRef="string_t" />
+
+            <Parameter name="PRESSURE_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="PRESSURE_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="PRESSURE_pressure" parameterTypeRef="float_pressure_t" />
+            <Parameter name="PRESSURE_zero_level_pressure" parameterTypeRef="float_pressure_t" />
+            <Parameter name="PRESSURE_altitude" parameterTypeRef="float_distance_t" />
+            <Parameter name="PRESSURE_velocity_v" parameterTypeRef="float_velocity_t" />
+            <Parameter name="PRESSURE_temperature" parameterTypeRef="float_temperature_t" />
+
+            <Parameter name="MOTION_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="MOTION_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="MOTION_accel_x_rocket" parameterTypeRef="float_accel_t" />
+            <Parameter name="MOTION_accel_y_rocket" parameterTypeRef="float_accel_t" />
+            <Parameter name="MOTION_accel_z_rocket" parameterTypeRef="float_accel_t" />
+            <Parameter name="MOTION_gyro_x_rocket" parameterTypeRef="float_rotation_t" />
+            <Parameter name="MOTION_gyro_y_rocket" parameterTypeRef="float_rotation_t" />
+            <Parameter name="MOTION_gyro_z_rocket" parameterTypeRef="float_rotation_t" />
+            <Parameter name="MOTION_tilt" parameterTypeRef="float_angle_t" />
+            <Parameter name="MOTION_g" parameterTypeRef="float_accel_t" />
+            <Parameter name="MOTION_a" parameterTypeRef="float_accel_t" />
+            <Parameter name="MOTION_rpm" parameterTypeRef="float_t" />
+            <Parameter name="MOTION_a_x_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_a_y_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_a_z_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_x_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_y_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_z_offset" parameterTypeRef="int16_t" />
+
+            <Parameter name="GPS_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="GPS_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="GPS_status" parameterTypeRef="uint4_gpsstatus_t" />
+            <Parameter name="GPS_satellites" parameterTypeRef="uint4_t" />
+            <Parameter name="GPS_hours" parameterTypeRef="uint8_t" />
+            <Parameter name="GPS_minutes" parameterTypeRef="uint8_t" />
+            <Parameter name="GPS_seconds" parameterTypeRef="uint8_t" />
+            <Parameter name="GPS_latitude" parameterTypeRef="float_angle_t" />
+            <Parameter name="GPS_longitude" parameterTypeRef="float_angle_t" />
+            <Parameter name="GPS_altitude" parameterTypeRef="float_distance_t" />
+            <Parameter name="GPS_v_north" parameterTypeRef="float_velocity_t" />
+            <Parameter name="GPS_v_east" parameterTypeRef="float_velocity_t" />
+            <Parameter name="GPS_v_down" parameterTypeRef="float_velocity_t" />
+            <Parameter name="GPS_milli_hdop" parameterTypeRef="uint16_t" />
+            <Parameter name="GPS_milli_vdop" parameterTypeRef="uint16_t" />
+            <Parameter name="GPS_time_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_location_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_altitude_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_speed_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_hdop_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_vdop_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_06" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_07" parameterTypeRef="bool_t" />
+
+            <Parameter name="RADIO_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="RADIO_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="RADIO_free" parameterTypeRef="uint4_t" />
+            <Parameter name="RADIO_opsmode" parameterTypeRef="uint4_opsmode_t" />
+            <Parameter name="RADIO_error_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_warning_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32_udp_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32_ccsds_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32cam_udp_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32cam_ccsds_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_esp32cam_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_separation_sts" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_pressure_current" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_motion_current" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_gps_current" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32cam_current" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_camera_current" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32_wifi_connected" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32cam_wifi_connected" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_pressure_altitude" parameterTypeRef="uint8_distance_t" />
+            <Parameter name="RADIO_pressure_velocity_v" parameterTypeRef="int8_velocity_t" />
+            <Parameter name="RADIO_temperature" parameterTypeRef="int8_temperature_t" />
+            <Parameter name="RADIO_motion_tilt" parameterTypeRef="uint8_angle_t" />
+            <Parameter name="RADIO_motion_g" parameterTypeRef="uint8_accel_t" />
+            <Parameter name="RADIO_motion_a" parameterTypeRef="int8_accel_t" />
+            <Parameter name="RADIO_motion_rpm" parameterTypeRef="int8_t" />
+            <Parameter name="RADIO_camera_pictures" parameterTypeRef="uint16_t" />
+            <Parameter name="RADIO_gps_satellites" parameterTypeRef="uint4_t" />
+            <Parameter name="RADIO_gps_velocity_v" parameterTypeRef="int8_velocity_t" />
+            <Parameter name="RADIO_gps_velocity" parameterTypeRef="uint8_velocity_t" />
+            <Parameter name="RADIO_gps_altitude" parameterTypeRef="uint8_distance_t" />
+            <Parameter name="RADIO_camera_image_ctr" parameterTypeRef="uint8_t" />
+            <Parameter name="RADIO_camera_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="RADIO_sd_free" parameterTypeRef="uint8_t" />
+
+            <Parameter name="TIMER_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="TIMER_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="TIMER_radio_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_pressure_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_motion_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_gps_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_esp32cam_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_loop_duration" parameterTypeRef="uint8_t" />
+            <Parameter name="TIMER_do_radio" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_do_pressure" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_do_motion" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_do_gps" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_free_03" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_free_02" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_free_01" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_free_00" parameterTypeRef="bool_t" />
+        </ParameterSet>
+        <ContainerSet>
+            <SequenceContainer abstract="true" name="CCSDSPacket">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_ID" />
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_Sequence" />
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_Length" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="TelemetryPacket">
+                <BaseContainer containerRef="CCSDSPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="0" parameterRef="CCSDS_Packet_ID/Version" />
+                            <Comparison value="TM" parameterRef="CCSDS_Packet_ID/Type" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList />
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d sts_esp32">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="42" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="STSESP32_millis" />
+                    <ParameterRefEntry parameterRef="STSESP32_packet_ctr" />
+                    <ParameterRefEntry parameterRef="STSESP32_subsystem" />
+                    <ParameterRefEntry parameterRef="STSESP32_type" />
+                    <ParameterRefEntry parameterRef="STSESP32_message" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d sts_esp32cam">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="43" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="STSESP32CAM_millis" />
+                    <ParameterRefEntry parameterRef="STSESP32CAM_packet_ctr" />
+                    <ParameterRefEntry parameterRef="STSESP32CAM_subsystem" />
+                    <ParameterRefEntry parameterRef="STSESP32CAM_type" />
+                    <ParameterRefEntry parameterRef="STSESP32CAM_message" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_esp32">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="44" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="ESP32_millis" />
+                    <ParameterRefEntry parameterRef="ESP32_packet_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32_free" />
+                    <ParameterRefEntry parameterRef="ESP32_opsmode" />
+                    <ParameterRefEntry parameterRef="ESP32_error_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32_warning_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32_tc_exec_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32_tc_fail_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32_radio_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_pressure_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_motion_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_gps_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_camera_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_timer_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_udp_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_yamcs_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_serial_in_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_serial_out_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_udp_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32_yamcs_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32_serial_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32_mem_free" />
+                    <ParameterRefEntry parameterRef="ESP32_wifi_yamcs_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_wifi_udp_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_wifi_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_camera_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_gps_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_motion_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_pressure_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_radio_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_free_10" />
+                    <ParameterRefEntry parameterRef="ESP32_free_11" />
+                    <ParameterRefEntry parameterRef="ESP32_free_12" />
+                    <ParameterRefEntry parameterRef="ESP32_err_yamcs_dataloss" />
+                    <ParameterRefEntry parameterRef="ESP32_err_udp_dataloss" />
+                    <ParameterRefEntry parameterRef="ESP32_err_serial_dataloss" />
+                    <ParameterRefEntry parameterRef="ESP32_warn_wifi_connloss" />
+                    <ParameterRefEntry parameterRef="ESP32_warn_serial_connloss" />
+                    <ParameterRefEntry parameterRef="ESP32_separation_sts" />
+                    <ParameterRefEntry parameterRef="ESP32_wifi_connected" />
+                    <ParameterRefEntry parameterRef="ESP32_serial_connected" />
+                    <ParameterRefEntry parameterRef="ESP32_camera_current" />
+                    <ParameterRefEntry parameterRef="ESP32_gps_current" />
+                    <ParameterRefEntry parameterRef="ESP32_motion_current" />
+                    <ParameterRefEntry parameterRef="ESP32_pressure_current" />
+                    <ParameterRefEntry parameterRef="ESP32_radio_current" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_esp32cam">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="45" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="ESP32CAM_millis" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_packet_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_error_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_warning_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_tc_exec_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_tc_fail_ctr" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_timer_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_udp_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_yamcs_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_serial_in_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_serial_out_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_json_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_cam_image_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_udp_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_yamcs_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_serial_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_json_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_mem_free" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_free" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_wifi_image_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_wifi_yamcs_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_wifi_udp_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_wifi_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_json_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_image_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_10" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_11" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_12" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_serial_connected" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_wifi_connected" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_camera_current" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_sd_current" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_camera_enabled" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_camera">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="46" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="CAMERA_millis" />
+                    <ParameterRefEntry parameterRef="CAMERA_packet_ctr" />
+                    <ParameterRefEntry parameterRef="CAMERA_resolution" />
+                    <ParameterRefEntry parameterRef="CAMERA_camera_mode" />
+                    <ParameterRefEntry parameterRef="CAMERA_filesize" />
+                    <ParameterRefEntry parameterRef="CAMERA_wifi_ms" />
+                    <ParameterRefEntry parameterRef="CAMERA_sd_ms" />
+                    <ParameterRefEntry parameterRef="CAMERA_exposure_ms" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_00" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_01" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_02" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_03" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_04" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_05" />
+                    <ParameterRefEntry parameterRef="CAMERA_free_06" />
+                    <ParameterRefEntry parameterRef="CAMERA_auto_res" />
+                    <ParameterRefEntry parameterRef="CAMERA_filename" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_pressure">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="49" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="PRESSURE_millis" />
+                    <ParameterRefEntry parameterRef="PRESSURE_packet_ctr" />
+                    <ParameterRefEntry parameterRef="PRESSURE_pressure" />
+                    <ParameterRefEntry parameterRef="PRESSURE_zero_level_pressure" />
+                    <ParameterRefEntry parameterRef="PRESSURE_altitude" />
+                    <ParameterRefEntry parameterRef="PRESSURE_velocity_v" />
+                    <ParameterRefEntry parameterRef="PRESSURE_temperature" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_motion">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="48" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="MOTION_millis" />
+                    <ParameterRefEntry parameterRef="MOTION_packet_ctr" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_x_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_y_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_z_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_x_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_y_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_z_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_tilt" />
+                    <ParameterRefEntry parameterRef="MOTION_g" />
+                    <ParameterRefEntry parameterRef="MOTION_a" />
+                    <ParameterRefEntry parameterRef="MOTION_rpm" />
+                    <ParameterRefEntry parameterRef="MOTION_a_x_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_a_y_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_a_z_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_x_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_y_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_z_offset" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_gps">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="47" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="GPS_millis" />
+                    <ParameterRefEntry parameterRef="GPS_packet_ctr" />
+                    <ParameterRefEntry parameterRef="GPS_satellites" />
+                    <ParameterRefEntry parameterRef="GPS_status" />
+                    <ParameterRefEntry parameterRef="GPS_hours" />
+                    <ParameterRefEntry parameterRef="GPS_minutes" />
+                    <ParameterRefEntry parameterRef="GPS_seconds" />
+                    <ParameterRefEntry parameterRef="GPS_latitude" />
+                    <ParameterRefEntry parameterRef="GPS_longitude" />
+                    <ParameterRefEntry parameterRef="GPS_altitude" />
+                    <ParameterRefEntry parameterRef="GPS_v_north" />
+                    <ParameterRefEntry parameterRef="GPS_v_east" />
+                    <ParameterRefEntry parameterRef="GPS_v_down" />
+                    <ParameterRefEntry parameterRef="GPS_milli_hdop" />
+                    <ParameterRefEntry parameterRef="GPS_milli_vdop" />
+                    <ParameterRefEntry parameterRef="GPS_free_07" />
+                    <ParameterRefEntry parameterRef="GPS_free_06" />
+                    <ParameterRefEntry parameterRef="GPS_vdop_valid" />
+                    <ParameterRefEntry parameterRef="GPS_hdop_valid" />
+                    <ParameterRefEntry parameterRef="GPS_speed_valid" />
+                    <ParameterRefEntry parameterRef="GPS_altitude_valid" />
+                    <ParameterRefEntry parameterRef="GPS_location_valid" />
+                    <ParameterRefEntry parameterRef="GPS_time_valid" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_radio">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="50" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="RADIO_millis" />
+                    <ParameterRefEntry parameterRef="RADIO_packet_ctr" />
+                    <ParameterRefEntry parameterRef="RADIO_free" />
+                    <ParameterRefEntry parameterRef="RADIO_opsmode" />
+                    <ParameterRefEntry parameterRef="RADIO_error_ctr" />
+                    <ParameterRefEntry parameterRef="RADIO_warning_ctr" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32_udp_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32_ccsds_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32_serial_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_udp_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_ccsds_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_serial_buffer" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_wifi_connected" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32_wifi_connected" />
+                    <ParameterRefEntry parameterRef="RADIO_camera_current" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_current" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_current" />
+                    <ParameterRefEntry parameterRef="RADIO_motion_current" />
+                    <ParameterRefEntry parameterRef="RADIO_pressure_current" />
+                    <ParameterRefEntry parameterRef="RADIO_separation_sts" />
+                    <ParameterRefEntry parameterRef="RADIO_pressure_altitude" />
+                    <ParameterRefEntry parameterRef="RADIO_pressure_velocity_v" />
+                    <ParameterRefEntry parameterRef="RADIO_temperature" />
+                    <ParameterRefEntry parameterRef="RADIO_motion_tilt" />
+                    <ParameterRefEntry parameterRef="RADIO_motion_g" />
+                    <ParameterRefEntry parameterRef="RADIO_motion_a" />
+                    <ParameterRefEntry parameterRef="RADIO_motion_rpm" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_satellites" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_velocity_v" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_velocity" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_altitude" />
+                    <ParameterRefEntry parameterRef="RADIO_camera_image_ctr" />
+                    <ParameterRefEntry parameterRef="RADIO_camera_rate" />
+                    <ParameterRefEntry parameterRef="RADIO_sd_free" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d tm_timer">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="51" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="TIMER_millis" />
+                    <ParameterRefEntry parameterRef="TIMER_packet_ctr" />
+                    <ParameterRefEntry parameterRef="TIMER_radio_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_pressure_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_motion_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_gps_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_esp32cam_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_loop_duration" />
+                    <ParameterRefEntry parameterRef="TIMER_free_00" />
+                    <ParameterRefEntry parameterRef="TIMER_free_01" />
+                    <ParameterRefEntry parameterRef="TIMER_free_02" />
+                    <ParameterRefEntry parameterRef="TIMER_free_03" />
+                    <ParameterRefEntry parameterRef="TIMER_do_gps" />
+                    <ParameterRefEntry parameterRef="TIMER_do_motion" />
+                    <ParameterRefEntry parameterRef="TIMER_do_pressure" />
+                    <ParameterRefEntry parameterRef="TIMER_do_radio" />
+                </EntryList>
+            </SequenceContainer>
+        </ContainerSet>
+    </TelemetryMetaData>
+</SpaceSystem>
