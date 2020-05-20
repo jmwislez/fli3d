@@ -8,6 +8,17 @@ The name is obviously derived from "Fri3d Camp", and hints to the "Chinese elect
 
 ## Overview
 
+The Fli3d payload has roughly the size of a toilet paper roll, and weighs less than 100g.  It is intended for launch on a microrocket with minimally a B-motor.  The payload contains the following:
+  - a 3D-printed structure and fairing
+  - an ESP32 minikit MH-ET microprocessor board, running custom software (developed in Arduino IDE) to control all Fli3d subsystems and transmit live telemetry and receive commands over WiFi
+  - an MPU6050 accelerometer/gyroscope sensor unit for determining accelerations and orientation
+  - a BMP280 barometric sensor for determination of the rocket altitude
+  - a NEO6MV2 GPS module, for determination of position and speed
+  - an ESP32CAM module with an OV2640 camera and SD-card module, for image acquisition, in-flight image and telemetry storage, and live transmission of telemetry and images over WiFi
+  - a WL102-341 433 MHz radio transmitter module, for in-flight transmission of selected telemetry
+  - a 240 mAh Li-ION battery for standalone autonomy of 20 (TBC) minutes, with 134N3P charger for tethered operation or pre-launch charging
+  - separation detection, for detection of opening of parachute compartment
+
 ## Flights
 
 To date, the payload has not flown yet.  It is hoped to do one or more test flights before Fri3d Camp in August 2020, and one or more demo flights at Fri3d Camp.
