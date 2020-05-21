@@ -8,8 +8,7 @@ Originally, I intended to use a Wemos D1 mini (ESP8266) microprocessor board as 
 
 Also very small but much more powerful is the ESP32 minikit MH-ET Live board.  It looks very much like the D1 mini. A subset of its pins is even designed to be directly mapped to the D1 mini pinout.
 
-![Wemos D1 mini (ESP8266)](https://hackerstore.nl/PDF2/WeMosMini.png)
-![ESP32 minikit MH-ET](https://chiptron.cz/images/news/MH-ET_LIVE_D1_mini_ESP32/MH-ET_LIVE_D1_mini_ESP32_4.png)
+![ESP32 minikit MH-ET Live](https://chiptron.cz/images/news/MH-ET_LIVE_D1_mini_ESP32/MH-ET_LIVE_D1_mini_ESP32_4.png)
 
 This board is connected to the other Fli3d subsystems as follows:
   - powered at 5V by the 134N3P battery charger
@@ -26,8 +25,25 @@ I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/
 
 Some more details on this board's hardware: https://riot-os.org/api/group__boards__esp32__mh-et-live-minikit.html
 
-## ESP32CAM
-## GPS
-## accelerometer
-## barometer
+The board costs less than 5 euros, and weighs only XXXX g.
+
+## AI Thinker ESP32-CAM
+
+This neat little board includes a 2 megapixel (1600x1200) OV2640 colour camera with lens, an ESP32 microcontroller, and an SD-card adapter.  It merely weighs 8.5g, and costs less than 5 euros.
+
+![AI Thinker ESP32-CAM with OV2640](https://www.tinytronics.nl/shop/image/cache/data/product-2132/ESP32CAM_1-1000x1000.jpg)
+
+It interfaces to the ESP32 minikit over the serial connection.  All acquired telemetry is exchanged in both directions, so that both units have the full telemetry to send over WiFi, for redundancy.  Telemetry and images are stored on the SD card.  The SD card can also contain a configuration file, which allows to override default WiFi settings.
+
+The ESP32-CAM module allows the connection of an external WiFi antenna.  For this, it is however needed to unsolder and resolder a tiny SMD bridge connection on the board.  I attached a laptop WiFi antenna, but did not yet do the rerouting.  I intend to test whether the external antenna does yield a better WiFi range.
+
+Note that the ESP32-CAM module is slightly more cumbersome to flash than other development boards.  It does not feature an USB connector, so the flashing needs to be done via an USB to serial converter.  It is also needed to ground GPIO0 during flashing, and unground the pin and press the reset button in order to run the firmware.  So that's a lot of small manipulations, especially if the serial interface needs to be rewired after flashing.  Also OTA update cannot be used, since the memory is needed for the images.  Still, one gets used to this.
+
+The software was developed in Arduino IDE, and can be found in the following repository: https://github.com/jmwislez/fli3d-esp32cam 
+
+A datasheet is available here: https://github.com/jmwislez/fli3d/blob/master/Hardware/ESP32-CAM%20microcontroller%20%2B%20camera/ESP32_CAM_V1.6.pdf
+
+## NEO6MV2 GPS sensor
+## MPU6050 accelerometer/gyroscope sensor
+## BMP280 barometer sensor
 ## structure
