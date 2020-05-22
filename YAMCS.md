@@ -81,46 +81,53 @@ All three these files are found in https://github.com/jmwislez/fli3d/tree/master
 
 Re-starting Yamcs, I got parsing and compiling errors and warnings for the ```xtce.fli3d.mdb``` file until I got it right.  Nice!  After that, as a charm my telemetry was visible in the Yamcs web application!
 
+In order to set up the latest Yamcs server instead of the demo version, install the precompiled package from https://github.com/yamcs/yamcs/releases.  Copy your configuration files to ```etc/``` and ```mdb/```, and you're done.
+
 With this initial end-to-end test in place, I could further extend this, to implement all the functionality I need:
  - setting up and configuring Yamcs Studio for synoptic displays
- - add multiple packets
- - [move to TCP
- - [add event packets
- - [using the packet viewer: not really needed: there is a rudimentary one in Yamcs Server 
- - [telecommands
- - [archiving
+ - adding multiple packets and improving the MDB
+ - setting up the packet viewer 
+ - adding event packets
+ - moving to TCP
+ - introducing telecommands
+ - introducing archiving
 
 ## Setting up Yamcs Studio
 
 I first tried by downloading Yamcs Studio from github (https://github.com/yamcs/yamcs-studio), unzipping it, and compiling it using the “make” command, just as explained on github.  From there, I consulted the documentation in https://yamcs.org/media/yamcs-studio.pdf, but could not get any further.  The next step was impossible to guess: starting Yamcs Studio goes by the following command:
 ```releng/org.yamcs.studio.editor.product/target/products/yamcs-studio/linux/gtk/x86_64/yamcs-studio-1.3.4-SNAPSHOT/Yamcs\ Studio```
 
-While getting this answer from the developers, I got the advise to get a precompiled version from XXXXXXX
+While getting this answer from the developers, I got the advise to rather get a precompiled version from https://github.com/yamcs/yamcs-studio/releases .  That was much easier, indeed.
 
-The interesting windows “Archive” and “Data Links” are not activated by default, so this needs to be done first through the XXXXX 
+Some interesting windows like “Archive” and “Data Links” are not activated by default, so this needs to be done first through "Windows" / "Show View" / "Others...". 
 
-## Adding multiple packets
+The learning curve for creating synoptic displays with the Display Builder is not steep.  The interface has some glitches and pecularities, but these are easily worked around once known.  It is also very easy to have both Display Builder and Display Runner open, as this allows to test changes in displays immediately.
+
+The displays I created for Fli3d are here: https://github.com/jmwislez/fli3d/tree/master/Yamcs/yamcs-studio
+
+## Adding multiple packets and improving the Mission Database
 
 This was easy: I just had to have my payload send different packets over different APIDs, and define these packets in ```xtce.fli3d.xml```.
 
 Further editing of the ```src/main/yamcs/mdb/xtce.fli3d.xml``` MDB definition file can be done following the format description in https://public.ccsds.org/Pubs/660x1g1.pdf. Be sure to edit the file in src, and not the file in target as I accidentally did a few times.  It happened to me by accident and I lost my updates.  Additions are:
   - add measurement units
   - add enumeration labels
-  - define correct endianness of multi-byte data.  In the XTCE file, uint16_t should be defined as <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" /> to correctly interpret data encoded by ESP32.
-reverse order of sub-byte elements
+  - define correct endianness of multi-byte data.  In the XTCE file, uint16_t should be defined as ```<IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" />``` to correctly interpret data encoded by ESP32.
 
+Note that if you define a series of sub-byte elements in the packed struct on the ESP32, these are interpreted in reversed sequence on Yamcs.  
 
+## Setting up the Packet Viewer
 
-See mail of Fabian on using binary distributions. 
+The best way to get the Packet Viewer is from the Yamcs release page: https://github.com/yamcs/yamcs/releases
 
+I personally did not yet manage to get it to work.  I did not put much effort on it, as there is a rudimentary packet viewer in the Yamcs Server web interface, which was sufficient to support my debugging work.
 
-Things I observed:
-Yamcs Server:
-on the Yamcs Server webpage, in parameters, the TM/TC value of Type in CCSDS_Packet_ID shows as “false”, while in the xtce file, zeroStringValue="TM" and oneStringValue="TC" are defined.
-Display Editor:
-editing the “PV Name” property in the Properties tab does not show until enter is pressed, this is true for most of the entries there
+## Adding Event packets
 
-Questions:
-how to migrate from demo instance of yamcs to yamcs-master?
+## Moving to TCP
+
+## Introducing telecommanding
+
+## Introducing archiving
 
 
