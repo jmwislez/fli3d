@@ -33,7 +33,7 @@ This neat little board includes a 2 megapixel (1600x1200) OV2640 colour camera w
 
 ![AI Thinker ESP32-CAM with OV2640](https://www.tinytronics.nl/shop/image/cache/data/product-2132/ESP32CAM_1-1000x1000.jpg)
 
-The camera is of course not very fast, and wifi transmission and storage further slow it down.  At low res
+The camera is of course not very fast, and wifi transmission and storage further slow it down.  At low resolution, frame rates can be 25 Hz or higher.  At full resolution, this is rather 1 Hz.
 
 The board interfaces to the ESP32 minikit over the serial connection.  All acquired telemetry is exchanged in both directions, so that both units have the full telemetry to send over WiFi, for redundancy.  Telemetry and images are stored on the SD card.  The SD card can also contain a configuration file, which allows to override default WiFi settings.
 
@@ -45,7 +45,7 @@ Most ESP32 connectivity is in use by the camera and SD card module, so do not ex
 
 The software was developed in Arduino IDE, and can be found in the following repository: https://github.com/jmwislez/fli3d-esp32cam 
 
-A datasheet is available here: https://github.com/jmwislez/fli3d/blob/master/Hardware/ESP32-CAM%20microcontroller%20%2B%20camera/ESP32_CAM_V1.6.pdf
+A schematic of the board is available here: https://github.com/jmwislez/fli3d/blob/master/Hardware/ESP32-CAM%20microcontroller%20%2B%20camera/ESP32_CAM_V1.6.pdf
 
 ## NEO6MV2 GPS sensor
 
@@ -53,8 +53,38 @@ It is astonishingly easy and cheap to integrate GPS functionality.  The NEO6MV2 
 
 The GPS module is connected to ESP32 minikit over serial at 57600 baud.  Default speed is 9600 baud.  I tried 115200 baud too, but sometimes the serial line would not synchronize at that speed.
 
+I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/fli3d/blob/master/Hardware/NEO6MV2%20gps/neo6mv2.FCStd
+
+The user manual is here: https://github.com/jmwislez/fli3d/blob/master/Hardware/NEO6MV2%20gps/U-blox-6-Receiver-Description-Including-Protocol-Specification.pdf
+
 ## MPU6050 accelerometer/gyroscope sensor
+
+The MPU6050 provides a 6 DOF motion sensor over an I2C bus.  It provides passthrough functionality, which is used to connect the BMP280 sensor.  Initially I had hoped to use the sensor for internal navigation, i.e. determine position, speed, and orientation by integrating the acceleration/gyroscope readings.  The sensor is far from being sufficiently precise for this: it is even non trivial to get some usable data out of it.  There is a Digital Motion Processor on-board, but this functionality was hard to use, unstable, and did not help me to get what I needed.  Hence, I ended up doing my own naive calibration.   
+
+In a next version of Fli3d, it's probably worth looking at MPU9255, which also includes a 3D compass and can therefore more reliably provide orientation.  That board is slightly bigger, and would require a mechanical redesign of the Fli3d structure.
+
+Mechanically, the board is mounted so that the sensor is on the rocket's central axis.  The X/Y/Z axes of the sensor correspond to Z/X/Y axes of the rocket.
+
+The documentation of the board is extensive (https://github.com/jmwislez/fli3d/tree/master/Hardware/MPU6050%206DOF%20motion%20sensor), but lacks precision to harvest the full power of the chip.
+
 ## BMP280 barometer sensor
+
+The BMP280 is a small, simple, but neat little board with a very sensitive barometer and thermometer, which can be used to determine altitude changes.  The resolution of altitude measurements is typically better than 1 meter!  
+
+The board is connected over I2C, as an auxiliary board of the MPU6050.
+
+The user manual of the chip is here: https://github.com/jmwislez/fli3d/blob/master/Hardware/BMP280%20pressure%20sensor/BST-BMP280-DS001-11.pdf
+
 ## WL102-341 433MHz radio transmitter and antenna
+
+Not knowing the stability of the WiFi connection in flight, I decided to add a 433 MHz transmitter on board, for transmission of basic telemetry.  Moreover, this can serve as a beacon for Doppler measurements, which can later be correlated to the determined flight path.
+
+This is the only board in the stack that needs to be powered at 3.3V instead of 5V.  This power is provided by the ESP32-CAM board, for ease of wiring.
+
+The signal feeding the transmitter is digital output IO26 of the ESP32 minikit board, and this OOK (on/off keying) signal is then transmitted as is by switching the transmitter on and off.
+
+The antenna for the 433 MHz is screwed on top of the rocket.
+
 ## Battery and battery charger
+## Wiring
 ## Structure
