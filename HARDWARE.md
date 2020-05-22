@@ -1,6 +1,7 @@
 # Fli3d Hardware
 
 ## Overview
+TBW
 
 ## ESP32 minikit MH-ET Live
 
@@ -49,7 +50,7 @@ A schematic of the board is available here: https://github.com/jmwislez/fli3d/bl
 
 ## NEO6MV2 GPS sensor
 
-It is astonishingly easy and cheap to integrate GPS functionality.  The NEO6MV2 board has all you need, for slightly more than 6g (including antenna) and slightly more than 3 euros.
+It is astonishingly easy and cheap to integrate GPS functionality.  The NEO6MV2 board has all you need and can provide up to 16 readings per second, for slightly more than 6 grams (including antenna) and slightly more than 3 euros.
 
 The GPS module is connected to ESP32 minikit over serial at 57600 baud.  Default speed is 9600 baud.  I tried 115200 baud too, but sometimes the serial line would not synchronize at that speed.
 
