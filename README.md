@@ -33,5 +33,19 @@ Each flight will be designated through a successive starting letter, and have a 
   - Fli3d Chicken
   - Fli3d Dumplings
   - Fli3d Eggs
+  - Fli3d Fries
   - ...
   - Fli3d Rice
+
+## Available documentation and repositories
+
+  - https://github.com/jmwislez/fli3d :
+    - Project introduction
+    - Hardware design files
+    - Yamcs (ground segment software) configuration
+  - https://github.com/jmwislez/fli3d-esp32 :
+    - Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit
+  - https://github.com/jmwislez/fli3d-esp32cam :
+    - Arduino IDE code for fli3d ESP32-CAM
+  - https://github.com/jmwislez/fli3d-lib :
+    - Common Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit and ESP32-CAM
