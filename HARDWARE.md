@@ -85,6 +85,15 @@ The signal feeding the transmitter is digital output IO26 of the ESP32 minikit b
 
 The antenna for the 433 MHz is screwed on top of the rocket.
 
-## Battery and battery charger
+## Battery and 134N3P battery charger
+
+The on-board battery is a 240 mAh 3.7V Li-ION battery.  This should provide an autonomy of roughly 20 minutes for a fully active system.  
+
+The battery is not directly driving the Fli3d electronics, but connected to a 134N3P battery charger.  This is basically a circuit as used in power banks.  It converts the battery output to a steady 5V, it allow charging the battery, and while connected for charging, 5V is neatly provided.  Hence, it allows for tethered operations, and just before launch the power tether can be detached, and Fli3d is seamlessly on autonomous power with a fully charged battery.
+
+Mechanically, the type A USB connector on the board needs to be unsoldered.  Also, the voltage of the battery will be monitored by an ADC input the ESP32 minikit board.  This should allow to give live view on the battery charging status.
+
 ## Wiring
+
+
 ## Structure
