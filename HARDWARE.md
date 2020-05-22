@@ -95,5 +95,16 @@ Mechanically, the type A USB connector on the board needs to be unsoldered.  Als
 
 ## Wiring
 
+There is not much physical space available for wire routing or connection.  Originally, I intended to use directly soldered wire connections, and to unsolder the headers where the boards came with headers pre-mounted.  The latter was not easy given my limited soldering skills and equipment, so I decided to keep th e headers and use a combination of header sockets and direct soldering.  
+
+An overview of the wiring connections is given below.
+
+![Fli3d wiring overview](https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/wiring%20fli3d.png)
 
 ## Structure
+
+The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a Prusa i3 clone printer.  Assembly is mainly done with M2.5 screws and contact glue.
+
+The FreeCAD design files are here: https://github.com/jmwislez/fli3d/tree/master/Hardware/Structure
+
+Each structural element coloured differently needs to be printed separately.
