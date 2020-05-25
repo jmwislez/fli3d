@@ -43,9 +43,9 @@ Each flight will be designated through a successive starting letter, and have a 
     - Project introduction
     - Hardware design files
     - Yamcs (ground segment software) configuration
-  - https://github.com/jmwislez/fli3d-esp32 :
+  - https://github.com/jmwislez/fli3d_esp32 :
     - Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit
-  - https://github.com/jmwislez/fli3d-esp32cam :
+  - https://github.com/jmwislez/fli3d_esp32cam :
     - Arduino IDE code for fli3d ESP32-CAM
-  - https://github.com/jmwislez/fli3d-lib :
+  - https://github.com/jmwislez/fli3d_lib :
     - Common Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit and ESP32-CAM
