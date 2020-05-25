@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 edition of the Belgian "Fri3d Camp" hacker event. Its purpose is to develop and launch an ESP32 payload on top of a microrocket.  And this payload needs to be as cool as possible ...
+Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 (well, 2022 :'-( ) edition of the Belgian "Fri3d Camp" hacker event (https://www.fri3d.be/). Its purpose is to develop and launch an ESP32 payload on top of a microrocket.  And this payload needs to be as cool as possible ...
 
 The name is obviously derived from "Fri3d Camp", and hints to the "Chinese electronics" used to build it.
 
