@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="esp32-demo" 
+    xmlns="http://www.omg.org/space/xtce" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
+    <TelemetryMetaData>
+        <ParameterTypeSet>
+            <AggregateParameterType name="CCSDS_Packet_ID_Type">
+                <MemberList>
+                    <Member name="Version" typeRef="CCSDSVersionType" />
+                    <Member name="Type" typeRef="CCSDSTypeType" />
+                    <Member name="SecHdrFlag" typeRef="CCSDSSecHdrFlagType" />
+                    <Member name="APID" typeRef="CCSDSAPIDType" />
+                </MemberList>
+            </AggregateParameterType>
+            <AggregateParameterType name="CCSDS_Packet_Sequence_Type">
+                <MemberList>
+                    <Member name="GroupFlags" typeRef="CCSDSGroupFlagsType" />
+                    <Member name="Count" typeRef="CCSDSSourceSequenceCountType" />
+                </MemberList>
+            </AggregateParameterType>
+            <IntegerParameterType name="CCSDSVersionType" signed="false" initialValue="0">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="3" />
+            </IntegerParameterType>
+            <BooleanParameterType name="CCSDSTypeType" zeroStringValue="TM" oneStringValue="TC">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="1" />
+            </BooleanParameterType>
+            <BooleanParameterType name="CCSDSSecHdrFlagType" zeroStringValue="NotPresent" oneStringValue="Present">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="1" />
+            </BooleanParameterType>
+            <IntegerParameterType name="CCSDSAPIDType" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="11" />
+            </IntegerParameterType>
+            <EnumeratedParameterType name="CCSDSGroupFlagsType" initialValue="Standalone">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="2" />
+                <EnumerationList>
+                    <Enumeration value="0" label="Continuation" />
+                    <Enumeration value="1" label="First" />
+                    <Enumeration value="2" label="Last" />
+                    <Enumeration value="3" label="Standalone" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <IntegerParameterType name="CCSDSSourceSequenceCountType" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="14" />
+            </IntegerParameterType>
+            <IntegerParameterType name="CCSDSPacketLengthType" signed="false">
+                <UnitSet>
+                    <Unit description="Size">Octets</Unit>
+                </UnitSet>
+                <IntegerDataEncoding sizeInBits="16" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int32_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint32_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint24_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="24" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int16_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint16_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <IntegerParameterType name="int8_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint8_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </IntegerParameterType>
+            <IntegerParameterType name="uint4_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="4" />
+            </IntegerParameterType>
+            <IntegerParameterType name="bool_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="1" />
+            </IntegerParameterType>
+            <FloatParameterType name="float_t">
+                <UnitSet />
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType> 
+            <FloatParameterType name="float_pressure_t">
+                <UnitSet>
+                    <Unit description="Unit">mbar</Unit>
+                </UnitSet>
+                <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </FloatParameterType>
+            <EnumeratedParameterType name="uint4_mode_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="4" />
+                <EnumerationList>
+                    <Enumeration value="0" label="init" />
+                    <Enumeration value="1" label="checkout" />
+                    <Enumeration value="2" label="ready" />
+                    <Enumeration value="3" label="active" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+        </ParameterTypeSet>
+        <ParameterSet>
+            <Parameter name="CCSDS_Packet_ID" parameterTypeRef="CCSDS_Packet_ID_Type" />
+            <Parameter name="CCSDS_Packet_Sequence" parameterTypeRef="CCSDS_Packet_Sequence_Type" />
+            <Parameter name="CCSDS_Packet_Length" parameterTypeRef="CCSDSPacketLengthType" />
+      
+            <Parameter name="DEMO1_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="DEMO1_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="DEMO1_mode" parameterTypeRef="uint4_mode_t" />
+            <Parameter name="DEMO1_bool1" parameterTypeRef="bool_t" />
+            <Parameter name="DEMO1_bool2" parameterTypeRef="bool_t" />
+            <Parameter name="DEMO1_bool3" parameterTypeRef="bool_t" />
+            <Parameter name="DEMO1_bool4" parameterTypeRef="bool_t" />
+            <Parameter name="DEMO1_pressure" parameterTypeRef="float_pressure_t" />
+
+            <Parameter name="DEMO2_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="DEMO2_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="DEMO2_value1" parameterTypeRef="float_t" />
+            <Parameter name="DEMO2_value2" parameterTypeRef="float_t" />
+        </ParameterSet>
+        <ContainerSet>
+            <SequenceContainer abstract="true" name="CCSDSPacket">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_ID" />
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_Sequence" />
+                    <ParameterRefEntry parameterRef="CCSDS_Packet_Length" />
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="TelemetryPacket">
+                <BaseContainer containerRef="CCSDSPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="0" parameterRef="CCSDS_Packet_ID/Version" />
+                            <Comparison value="TM" parameterRef="CCSDS_Packet_ID/Type" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList />
+            </SequenceContainer>
+            <SequenceContainer name="ESP32-DEMO packet 1">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="101" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="DEMO1_millis" />
+                    <ParameterRefEntry parameterRef="DEMO1_packet_ctr" />
+                    <ParameterRefEntry parameterRef="DEMO1_bool4" />
+                    <ParameterRefEntry parameterRef="DEMO1_bool3" />
+                    <ParameterRefEntry parameterRef="DEMO1_bool2" />
+                    <ParameterRefEntry parameterRef="DEMO1_bool1" />
+                    <ParameterRefEntry parameterRef="DEMO1_mode" />
+                    <ParameterRefEntry parameterRef="DEMO1_pressure" />                    
+                </EntryList>
+            </SequenceContainer>
+            <SequenceContainer name="ESP32-DEMO packet 2">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="102" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="DEMO2_millis" />
+                    <ParameterRefEntry parameterRef="DEMO2_packet_ctr" />
+                    <ParameterRefEntry parameterRef="DEMO2_value1" />
+                    <ParameterRefEntry parameterRef="DEMO2_value2" />
+                </EntryList>
+            </SequenceContainer>
+        </ContainerSet>
+    </TelemetryMetaData>
+</SpaceSystem>
