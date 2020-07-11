@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 edition of the Belgian "Fri3d Camp" hacker event. Its purpose is to develop and launch an ESP32 payload on top of a microrocket.  And this payload needs to be as cool as possible ...
+Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 (well, 2022 :'-( ) edition of the Belgian "Fri3d Camp" hacker event (https://www.fri3d.be/). Its purpose is to develop and launch an ESP32 payload on top of a microrocket.  And this payload needs to be as cool as possible ...
 
 The name is obviously derived from "Fri3d Camp", and hints to the "Chinese electronics" used to build it.
 
@@ -43,9 +43,9 @@ Each flight will be designated through a successive starting letter, and have a 
     - Project introduction
     - Hardware design files
     - Yamcs (ground segment software) configuration
-  - https://github.com/jmwislez/fli3d-esp32 :
+  - https://github.com/jmwislez/fli3d_esp32 :
     - Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit
-  - https://github.com/jmwislez/fli3d-esp32cam :
+  - https://github.com/jmwislez/fli3d_esp32cam :
     - Arduino IDE code for fli3d ESP32-CAM
-  - https://github.com/jmwislez/fli3d-lib :
+  - https://github.com/jmwislez/fli3d_lib :
     - Common Arduino IDE code for fli3d ESP32 MH-ET LIVE MiniKit and ESP32-CAM
