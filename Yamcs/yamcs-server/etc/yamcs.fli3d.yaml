@@ -1,11 +1,10 @@
 services:
-  - class: org.yamcs.tctm.DataLinkInitialiser
   - class: org.yamcs.archive.XtceTmRecorder
   - class: org.yamcs.archive.ParameterRecorder
   - class: org.yamcs.archive.AlarmRecorder
   - class: org.yamcs.archive.EventRecorder
   - class: org.yamcs.archive.ReplayServer
-  - class: org.yamcs.archive.IndexServer
+  - class: org.yamcs.archive.CcsdsTmIndex
   - class: org.yamcs.parameter.SystemParametersCollector
     args:
       provideJvmVariables: true
@@ -26,28 +25,24 @@ services:
 dataLinks:
   - name: esp32-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
-    args:
-      stream: tm_realtime
-      port: 10042
+    stream: tm_realtime
+    port: 10042
  #     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
   - name: esp32-udp-out
     class: org.yamcs.tctm.UdpTcDataLink
-    args:
-      stream: tc_realtime
-      host: localhost
-      port: 10052
+    stream: tc_realtime
+    host: localhost
+    port: 10052
   - name: esp32cam-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
-    args:
-      stream: tm_realtime
-      port: 10043
+    stream: tm_realtime
+    port: 10043
 #      packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
   - name: esp32cam-udp-out
     class: org.yamcs.tctm.UdpTcDataLink
-    args:
-      stream: tc_realtime
-      host: localhost
-      port: 10053
+    stream: tc_realtime
+    host: localhost
+    port: 10053
 
 mdb:
   # Configuration of the active loaders
