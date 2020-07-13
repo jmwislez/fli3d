@@ -69,9 +69,9 @@ Note that if you define a series of sub-byte elements in the packed struct on th
 
 ## Setting up the Packet Viewer
 
-The best way to get the Packet Viewer is from the Yamcs release page: https://github.com/yamcs/yamcs/releases
+There is a rudimentary packet viewer in the Yamcs Server web interface, but the Packet Viewer application is more powerful and user friendly.  And it does decode the telemetry packets. The best way to get the Packet Viewer is from the Yamcs release page: https://github.com/yamcs/yamcs/releases.
 
-I personally did not yet manage to get it to work.  I did not put much effort on it, as there is a rudimentary packet viewer in the Yamcs Server web interface, which was sufficient to support my debugging work.
+Use the item under the File menu to connect to your running Yamcs server, not forgetting to set the instance (in our case "fli3d" or "esp32-demo"), and tick "Server MDB".  You should see packets come in in real time, and be able to click on them for analysis. Nice!
 
 ## Adding Event packets
 
