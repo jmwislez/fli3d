@@ -1,10 +1,10 @@
 # Fli3d Hardware
 
 ## Overview
-![Fli3d block](https://github.com/jmwislez/fli3d/blob/master/Configuration/fli3d%20block%20diagram.png){:width="400px"}
-![Fli3d closed](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20closed%20v4.png){:width="400px"}
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png" width="400px">
-![Fli3d open 2](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%202.png){:width="400px"}
+<img src="https://github.com/jmwislez/fli3d/blob/master/Configuration/fli3d%20block%20diagram.png">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20closed%20v4.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%202.png" width="600px">
 
 ## ESP32 minikit MH-ET Live
 
@@ -12,7 +12,7 @@ Originally, I intended to use a Wemos D1 mini (ESP8266) microprocessor board as 
 
 Also very small but much more powerful is the ESP32 minikit MH-ET Live board.  It looks very much like the D1 mini. A subset of its pins is even designed to be directly mapped to the D1 mini pinout.
 
-![ESP32 minikit MH-ET Live](https://chiptron.cz/images/news/MH-ET_LIVE_D1_mini_ESP32/MH-ET_LIVE_D1_mini_ESP32_4.png){:width="400px"}
+<img src="https://chiptron.cz/images/news/MH-ET_LIVE_D1_mini_ESP32/MH-ET_LIVE_D1_mini_ESP32_4.png" width="800px">
 
 This board is connected to the other Fli3d subsystems as follows:
   - powered at 5V by the 134N3P battery charger
@@ -35,7 +35,7 @@ The board costs less than 5 euros, and weighs only XXXX g.
 
 This neat little board includes a 2 megapixel (1600x1200) OV2640 colour camera with lens, an ESP32 microcontroller, and an SD-card adapter.  It merely weighs 8.5g, and costs less than 5 euros.
 
-![AI Thinker ESP32-CAM with OV2640](https://www.tinytronics.nl/shop/image/cache/data/product-2132/ESP32CAM_1-1000x1000.jpg){:width="400px"}
+<img src="https://www.tinytronics.nl/shop/image/cache/data/product-2132/ESP32CAM_1-1000x1000.jpg" width="400px">
 
 The camera is of course not very fast, and wifi transmission and storage further slow it down.  At low resolution, frame rates can be 25 Hz or higher.  At full resolution, this is rather 1 Hz.
 
@@ -103,14 +103,14 @@ There is not much physical space available for wire routing or connection.  Orig
 
 An overview of the wiring connections is given below.
 
-![Fli3d wiring overview](https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/wiring%20fli3d.png){:width="400px"}
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/wiring%20fli3d.png" width="800px">
 
 ## Structure
 
 The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a Prusa i3 clone printer.  Assembly is mainly done with M2.5 screws and contact glue.
 
-![Fli3d structure 1](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4%20-%201.png){:width="400px"}
-![Fli3d structure 2](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4%20-%202.png){:width="400px"}
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4%20-%201.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4%20-%202.png" width="600px">
 
 The FreeCAD design files are here: https://github.com/jmwislez/fli3d/tree/master/Hardware/Structure
 
