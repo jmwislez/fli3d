@@ -3,7 +3,7 @@
 ## Overview
 ![Fli3d block](https://github.com/jmwislez/fli3d/blob/master/Configuration/fli3d%20block%20diagram.png){:width="400px"}
 ![Fli3d closed](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20closed%20v4.png){:width="400px"}
-![Fli3d open 1](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png){:width="400px"}
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png" width="400px">
 ![Fli3d open 2](https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%202.png){:width="400px"}
 
 ## ESP32 minikit MH-ET Live
