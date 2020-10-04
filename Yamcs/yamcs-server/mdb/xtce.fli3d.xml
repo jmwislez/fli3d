@@ -66,6 +66,12 @@
                 <UnitSet/>
                 <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
             </IntegerParameterType>
+            <IntegerParameterType name="int16_distance_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
             <IntegerParameterType name="uint16_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
@@ -272,9 +278,9 @@
                     <Enumeration value="1" label="info" />
                     <Enumeration value="2" label="warning" />
                     <Enumeration value="3" label="error" />
-                    <Enumeration value="4" label="debug" />
-                    <Enumeration value="5" label="cmd" />
-                    <Enumeration value="6" label="response" />
+                    <Enumeration value="4" label="cmd" />
+                    <Enumeration value="5" label="cmd_resp" />
+                    <Enumeration value="6" label="cmd_fail" />
                 </EnumerationList>
             </EnumeratedParameterType>
             <EnumeratedParameterType name="uint4_subsystem_t">
@@ -291,8 +297,9 @@
                     <Enumeration value="7" label="sd" />
                     <Enumeration value="8" label="separation" />
                     <Enumeration value="9" label="timer" />
-                    <Enumeration value="10" label="esp32_wifi" />
-                    <Enumeration value="11" label="esp32cam_wifi" />
+                    <Enumeration value="10" label="fli3d" />
+                    <Enumeration value="11" label="ground" />
+                    <Enumeration value="12" label="any" />
                 </EnumerationList>
             </EnumeratedParameterType>
         </ParameterTypeSet>
@@ -359,15 +366,19 @@
             <Parameter name="ESP32_motion_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_gps_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_camera_rate" parameterTypeRef="uint8_rate_t" />
-            <Parameter name="ESP32_timer_rate" parameterTypeRef="uint24_rate_t" />
             <Parameter name="ESP32_udp_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_yamcs_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_serial_in_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_serial_out_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_fs_json_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32_fs_ccsds_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32_udp_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32_yamcs_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_fs_json_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32_fs_ccsds_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32_mem_free" parameterTypeRef="uint32_t" />
+            <Parameter name="ESP32_fs_free" parameterTypeRef="uint32_t" />
             <Parameter name="ESP32_radio_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_pressure_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_motion_enabled" parameterTypeRef="bool_t" />
@@ -376,22 +387,30 @@
             <Parameter name="ESP32_wifi_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_wifi_udp_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_wifi_yamcs_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_fs_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_fs_json_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_fs_ccsds_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_24" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_23" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_serial_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_wifi_connected" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_separation_sts" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_warn_serial_connloss" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_warn_wifi_connloss" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_err_serial_dataloss" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_err_udp_dataloss" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_err_yamcs_dataloss" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_free_12" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_free_11" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_free_10" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_err_fs_dataloss" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_31" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_30" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_radio_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_pressure_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_motion_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_gps_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_camera_current" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_serial_connected" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_wifi_connected" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_separation_sts" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_fs_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_time_current" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_free_40" parameterTypeRef="bool_t" />
 
             <Parameter name="ESP32CAM_millis" parameterTypeRef="uint24_t" />
             <Parameter name="ESP32CAM_packet_ctr" parameterTypeRef="uint16_t" />
@@ -404,32 +423,45 @@
             <Parameter name="ESP32CAM_yamcs_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32CAM_serial_in_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32CAM_serial_out_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_fs_json_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_fs_ccsds_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32CAM_sd_json_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32CAM_sd_ccsds_rate" parameterTypeRef="uint8_rate_t" />
-            <Parameter name="ESP32CAM_cam_image_rate" parameterTypeRef="uint8_rate_t" />
+            <Parameter name="ESP32CAM_camera_image_rate" parameterTypeRef="uint8_rate_t" />
             <Parameter name="ESP32CAM_udp_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32CAM_yamcs_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32CAM_serial_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_fs_json_buffer" parameterTypeRef="uint8_t" />
+            <Parameter name="ESP32CAM_fs_ccsds_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32CAM_sd_json_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32CAM_sd_ccsds_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32CAM_mem_free" parameterTypeRef="uint32_t" />
+            <Parameter name="ESP32CAM_fs_free" parameterTypeRef="uint32_t" />
             <Parameter name="ESP32CAM_sd_free" parameterTypeRef="uint32_t" />
-            <Parameter name="ESP32CAM_sd_enabled" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_sd_image_enabled" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_sd_json_enabled" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_sd_ccsds_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_wifi_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_wifi_udp_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_wifi_yamcs_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_wifi_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_fs_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_fs_json_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_fs_ccsds_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_10" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_json_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_sd_ccsds_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_camera_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_22" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_21" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_20" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_fs_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_sd_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_camera_current" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_wifi_connected" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_serial_connected" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_free_12" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_free_11" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_free_10" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_32" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_31" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_free_30" parameterTypeRef="bool_t" />
 
             <Parameter name="CAMERA_millis" parameterTypeRef="uint24_t" />
             <Parameter name="CAMERA_packet_ctr" parameterTypeRef="uint16_t" />
@@ -469,12 +501,12 @@
             <Parameter name="MOTION_g" parameterTypeRef="float_accel_t" />
             <Parameter name="MOTION_a" parameterTypeRef="float_accel_t" />
             <Parameter name="MOTION_rpm" parameterTypeRef="float_t" />
-            <Parameter name="MOTION_a_x_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_a_y_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_a_z_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_x_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_y_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_z_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_a_x_rocket_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_a_y_rocket_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_a_z_rocket_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_x_rocket_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_y_rocket_offset" parameterTypeRef="int16_t" />
+            <Parameter name="MOTION_g_z_rocket_offset" parameterTypeRef="int16_t" />
 
             <Parameter name="GPS_millis" parameterTypeRef="uint24_t" />
             <Parameter name="GPS_packet_ctr" parameterTypeRef="uint16_t" />
@@ -486,6 +518,12 @@
             <Parameter name="GPS_latitude" parameterTypeRef="float_angle_t" />
             <Parameter name="GPS_longitude" parameterTypeRef="float_angle_t" />
             <Parameter name="GPS_altitude" parameterTypeRef="float_distance_t" />
+            <Parameter name="GPS_latitude_zero" parameterTypeRef="float_angle_t" />
+            <Parameter name="GPS_longitude_zero" parameterTypeRef="float_angle_t" />
+            <Parameter name="GPS_altitude_zero" parameterTypeRef="float_distance_t" />
+            <Parameter name="GPS_x" parameterTypeRef="int16_distance_t" />
+            <Parameter name="GPS_y" parameterTypeRef="int16_distance_t" />
+            <Parameter name="GPS_z" parameterTypeRef="int16_distance_t" />
             <Parameter name="GPS_v_north" parameterTypeRef="float_velocity_t" />
             <Parameter name="GPS_v_east" parameterTypeRef="float_velocity_t" />
             <Parameter name="GPS_v_down" parameterTypeRef="float_velocity_t" />
@@ -497,8 +535,8 @@
             <Parameter name="GPS_speed_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_hdop_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_vdop_valid" parameterTypeRef="bool_t" />
-            <Parameter name="GPS_free_06" parameterTypeRef="bool_t" />
-            <Parameter name="GPS_free_07" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_01" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_00" parameterTypeRef="bool_t" />
 
             <Parameter name="RADIO_millis" parameterTypeRef="uint24_t" />
             <Parameter name="RADIO_packet_ctr" parameterTypeRef="uint16_t" />
@@ -538,20 +576,13 @@
 
             <Parameter name="TIMER_millis" parameterTypeRef="uint24_t" />
             <Parameter name="TIMER_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="TIMER_timer_rate" parameterTypeRef="uint32_t" />
             <Parameter name="TIMER_radio_duration" parameterTypeRef="uint8_t" />
             <Parameter name="TIMER_pressure_duration" parameterTypeRef="uint8_t" />
             <Parameter name="TIMER_motion_duration" parameterTypeRef="uint8_t" />
             <Parameter name="TIMER_gps_duration" parameterTypeRef="uint8_t" />
             <Parameter name="TIMER_esp32cam_duration" parameterTypeRef="uint8_t" />
-            <Parameter name="TIMER_loop_duration" parameterTypeRef="uint8_t" />
-            <Parameter name="TIMER_do_radio" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_do_pressure" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_do_motion" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_do_gps" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_free_03" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_free_02" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_free_01" parameterTypeRef="bool_t" />
-            <Parameter name="TIMER_free_00" parameterTypeRef="bool_t" />
+            <Parameter name="TIMER_timer_duration" parameterTypeRef="uint8_t" />
         </ParameterSet>
         <ContainerSet>
             <SequenceContainer abstract="true" name="CCSDSPacket">
@@ -629,15 +660,19 @@
                     <ParameterRefEntry parameterRef="ESP32_motion_rate" />
                     <ParameterRefEntry parameterRef="ESP32_gps_rate" />
                     <ParameterRefEntry parameterRef="ESP32_camera_rate" />
-                    <ParameterRefEntry parameterRef="ESP32_timer_rate" />
                     <ParameterRefEntry parameterRef="ESP32_udp_rate" />
                     <ParameterRefEntry parameterRef="ESP32_yamcs_rate" />
                     <ParameterRefEntry parameterRef="ESP32_serial_in_rate" />
                     <ParameterRefEntry parameterRef="ESP32_serial_out_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_json_rate" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_ccsds_rate" />
                     <ParameterRefEntry parameterRef="ESP32_udp_buffer" />
                     <ParameterRefEntry parameterRef="ESP32_yamcs_buffer" />
                     <ParameterRefEntry parameterRef="ESP32_serial_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_json_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_ccsds_buffer" />
                     <ParameterRefEntry parameterRef="ESP32_mem_free" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_free" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_yamcs_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_udp_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_enabled" />
@@ -646,17 +681,25 @@
                     <ParameterRefEntry parameterRef="ESP32_motion_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_pressure_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_radio_enabled" />
-                    <ParameterRefEntry parameterRef="ESP32_free_10" />
-                    <ParameterRefEntry parameterRef="ESP32_free_11" />
-                    <ParameterRefEntry parameterRef="ESP32_free_12" />
+                    <ParameterRefEntry parameterRef="ESP32_separation_sts" />
+                    <ParameterRefEntry parameterRef="ESP32_wifi_connected" />
+                    <ParameterRefEntry parameterRef="ESP32_serial_connected" />
+                    <ParameterRefEntry parameterRef="ESP32_free_23" />
+                    <ParameterRefEntry parameterRef="ESP32_free_24" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_ccsds_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_json_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32_free_30" />
+                    <ParameterRefEntry parameterRef="ESP32_free_31" />
+                    <ParameterRefEntry parameterRef="ESP32_err_fs_dataloss" />
                     <ParameterRefEntry parameterRef="ESP32_err_yamcs_dataloss" />
                     <ParameterRefEntry parameterRef="ESP32_err_udp_dataloss" />
                     <ParameterRefEntry parameterRef="ESP32_err_serial_dataloss" />
                     <ParameterRefEntry parameterRef="ESP32_warn_wifi_connloss" />
                     <ParameterRefEntry parameterRef="ESP32_warn_serial_connloss" />
-                    <ParameterRefEntry parameterRef="ESP32_separation_sts" />
-                    <ParameterRefEntry parameterRef="ESP32_wifi_connected" />
-                    <ParameterRefEntry parameterRef="ESP32_serial_connected" />
+                    <ParameterRefEntry parameterRef="ESP32_free_40" />
+                    <ParameterRefEntry parameterRef="ESP32_time_current" />
+                    <ParameterRefEntry parameterRef="ESP32_fs_current" />
                     <ParameterRefEntry parameterRef="ESP32_camera_current" />
                     <ParameterRefEntry parameterRef="ESP32_gps_current" />
                     <ParameterRefEntry parameterRef="ESP32_motion_current" />
@@ -685,32 +728,45 @@
                     <ParameterRefEntry parameterRef="ESP32CAM_yamcs_rate" />
                     <ParameterRefEntry parameterRef="ESP32CAM_serial_in_rate" />
                     <ParameterRefEntry parameterRef="ESP32CAM_serial_out_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_json_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_ccsds_rate" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_json_rate" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_rate" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_cam_image_rate" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_camera_image_rate" />
                     <ParameterRefEntry parameterRef="ESP32CAM_udp_buffer" />
                     <ParameterRefEntry parameterRef="ESP32CAM_yamcs_buffer" />
                     <ParameterRefEntry parameterRef="ESP32CAM_serial_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_json_buffer" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_ccsds_buffer" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_json_buffer" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_buffer" />
                     <ParameterRefEntry parameterRef="ESP32CAM_mem_free" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_free" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_free" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_10" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_ccsds_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_json_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_wifi_image_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_wifi_yamcs_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_wifi_udp_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_wifi_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_20" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_21" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_22" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_camera_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_json_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_image_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_enabled" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_free_10" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_free_11" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_free_12" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_30" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_31" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_free_32" />
                     <ParameterRefEntry parameterRef="ESP32CAM_serial_connected" />
                     <ParameterRefEntry parameterRef="ESP32CAM_wifi_connected" />
                     <ParameterRefEntry parameterRef="ESP32CAM_camera_current" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_current" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_camera_enabled" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_fs_current" />
                 </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d tm_camera">
@@ -783,12 +839,12 @@
                     <ParameterRefEntry parameterRef="MOTION_g" />
                     <ParameterRefEntry parameterRef="MOTION_a" />
                     <ParameterRefEntry parameterRef="MOTION_rpm" />
-                    <ParameterRefEntry parameterRef="MOTION_a_x_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_a_y_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_a_z_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_x_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_y_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_z_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_a_x_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_a_y_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_a_z_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_x_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_y_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_g_z_rocket_offset" />
                 </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d tm_gps">
@@ -811,13 +867,19 @@
                     <ParameterRefEntry parameterRef="GPS_latitude" />
                     <ParameterRefEntry parameterRef="GPS_longitude" />
                     <ParameterRefEntry parameterRef="GPS_altitude" />
+                    <ParameterRefEntry parameterRef="GPS_latitude_zero" />
+                    <ParameterRefEntry parameterRef="GPS_longitude_zero" />
+                    <ParameterRefEntry parameterRef="GPS_altitude_zero" />
+                    <ParameterRefEntry parameterRef="GPS_x" />
+                    <ParameterRefEntry parameterRef="GPS_y" />
+                    <ParameterRefEntry parameterRef="GPS_z" />
                     <ParameterRefEntry parameterRef="GPS_v_north" />
                     <ParameterRefEntry parameterRef="GPS_v_east" />
                     <ParameterRefEntry parameterRef="GPS_v_down" />
                     <ParameterRefEntry parameterRef="GPS_milli_hdop" />
                     <ParameterRefEntry parameterRef="GPS_milli_vdop" />
-                    <ParameterRefEntry parameterRef="GPS_free_07" />
-                    <ParameterRefEntry parameterRef="GPS_free_06" />
+                    <ParameterRefEntry parameterRef="GPS_free_00" />
+                    <ParameterRefEntry parameterRef="GPS_free_01" />
                     <ParameterRefEntry parameterRef="GPS_vdop_valid" />
                     <ParameterRefEntry parameterRef="GPS_hdop_valid" />
                     <ParameterRefEntry parameterRef="GPS_speed_valid" />
@@ -884,20 +946,13 @@
                 <EntryList>
                     <ParameterRefEntry parameterRef="TIMER_millis" />
                     <ParameterRefEntry parameterRef="TIMER_packet_ctr" />
+                    <ParameterRefEntry parameterRef="TIMER_timer_rate" />
                     <ParameterRefEntry parameterRef="TIMER_radio_duration" />
                     <ParameterRefEntry parameterRef="TIMER_pressure_duration" />
                     <ParameterRefEntry parameterRef="TIMER_motion_duration" />
                     <ParameterRefEntry parameterRef="TIMER_gps_duration" />
                     <ParameterRefEntry parameterRef="TIMER_esp32cam_duration" />
-                    <ParameterRefEntry parameterRef="TIMER_loop_duration" />
-                    <ParameterRefEntry parameterRef="TIMER_free_00" />
-                    <ParameterRefEntry parameterRef="TIMER_free_01" />
-                    <ParameterRefEntry parameterRef="TIMER_free_02" />
-                    <ParameterRefEntry parameterRef="TIMER_free_03" />
-                    <ParameterRefEntry parameterRef="TIMER_do_gps" />
-                    <ParameterRefEntry parameterRef="TIMER_do_motion" />
-                    <ParameterRefEntry parameterRef="TIMER_do_pressure" />
-                    <ParameterRefEntry parameterRef="TIMER_do_radio" />
+                    <ParameterRefEntry parameterRef="TIMER_timer_duration" />
                 </EntryList>
             </SequenceContainer>
         </ContainerSet>
