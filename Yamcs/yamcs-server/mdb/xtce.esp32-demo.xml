@@ -111,16 +111,6 @@
                 </EnumerationList>
             </EnumeratedParameterType>
         </ParameterTypeSet>
-        <AlgorithmSet>
-           <CustomAlgorithm name="esp32-demo_event">
-             <AlgorithmText language="JavaScript"><![CDATA[
-               Yamcs.warning('received packet');
-             ]]></AlgorithmText>
-             <TriggerSet>
-               <OnParameterUpdateTrigger parameterRef="DEMO1_packet_ctr" />
-             </TriggerSet>
-           </CustomAlgorithm>
-        </AlgorithmSet>
         <ParameterSet>
             <Parameter name="CCSDS_Packet_ID" parameterTypeRef="CCSDS_Packet_ID_Type" />
             <Parameter name="CCSDS_Packet_Sequence" parameterTypeRef="CCSDS_Packet_Sequence_Type" />

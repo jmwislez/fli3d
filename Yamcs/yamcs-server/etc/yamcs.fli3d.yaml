@@ -27,21 +27,27 @@ dataLinks:
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     port: 10042
- #     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
+    packetPreprocessorArgs:
+      timestampOffset: -1
+      seqCountOffset: -1
   - name: esp32-udp-out
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: localhost
+    host: 192.168.2.38
     port: 10052
   - name: esp32cam-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     port: 10043
-#      packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
+    packetPreprocessorArgs:
+      timestampOffset: -1
+      seqCountOffset: -1
   - name: esp32cam-udp-out
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: localhost
+    host: 192.168.2.39
     port: 10053
 
 mdb:
