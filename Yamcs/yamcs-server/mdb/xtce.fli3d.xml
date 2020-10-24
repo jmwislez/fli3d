@@ -283,8 +283,9 @@
                     <Enumeration value="2" label="warning" />
                     <Enumeration value="3" label="error" />
                     <Enumeration value="4" label="cmd" />
-                    <Enumeration value="5" label="cmd_resp" />
-                    <Enumeration value="6" label="cmd_fail" />
+                    <Enumeration value="5" label="cmd_ack" />
+                    <Enumeration value="6" label="cmd_resp" />
+                    <Enumeration value="7" label="cmd_fail" />
                 </EnumerationList>
             </EnumeratedParameterType>
             <EnumeratedParameterType name="uint4_subsystem_t">
@@ -318,18 +319,19 @@
                  case "init":
                  case "info":
                            Yamcs.info(type.value + ': [' + subsystem.value + '] ' + message.value);
-                  break;
+                           break;
                  case "cmd":  
+                 case "cmd_ack":  
                  case "cmd_resp":  
                            Yamcs.watch(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                  break;
+                           break;
                  case "cmd_fail":  
                  case "warning":
                            Yamcs.warning(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                  break;
+                           break;
                  default:
                            Yamcs.severe(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                                  break;
+                           break;
                }
              ]]></AlgorithmText>
              <InputSet>
@@ -347,18 +349,19 @@
                  case "init":
                  case "info":
                            Yamcs.info(type.value + ': [' + subsystem.value + '] ' + message.value);
-                  break;
+                           break;
                  case "cmd":  
+                 case "cmd_ack":  
                  case "cmd_resp":  
                            Yamcs.watch(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                  break;
+                           break;
                  case "cmd_fail":  
                  case "warning":
                            Yamcs.warning(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                  break;
+                           break;
                  default:
                            Yamcs.severe(type.value + ': [' + subsystem.value + '] ' + message.value);    
-                                  break;
+                           break;
                }
              ]]></AlgorithmText>
              <InputSet>
@@ -370,15 +373,35 @@
                <OnParameterUpdateTrigger parameterRef="STSESP32CAM_packet_ctr" />
              </TriggerSet>
            </CustomAlgorithm>
+           <CustomAlgorithm name="tm_esp32_err_yamcs_dataloss">
+             <AlgorithmText language="JavaScript"><![CDATA[
+               var wasYamcsDataLoss;
+               var yamcsDataLoss = err_yamcs_dataloss.value;
+               if (wasYamcsDataLoss !== undefined) {
+                 if (yamcsDataLoss && !wasYamcsDataLoss) {
+                   Yamcs.severe('error: [esp32] Data loss on yamcs connection'); 
+                 } else if (!yamcsDataLoss && wasYamcsDataLoss) {
+                   Yamcs.warning('warning: [ESP32] End of data loss on yamcs connection');
+                 }
+               }
+               wasYamcsDataLoss = yamcsDataLoss;
+             ]]></AlgorithmText>
+             <InputSet>
+               <InputParameterInstanceRef parameterRef="ESP32_err_yamcs_dataloss" inputName="err_yamcs_dataloss" />
+             </InputSet>
+             <TriggerSet>
+               <OnParameterUpdateTrigger parameterRef="ESP32_err_yamcs_dataloss" />
+             </TriggerSet>
+           </CustomAlgorithm>
            <CustomAlgorithm name="tm_esp32_err_serial_dataloss">
              <AlgorithmText language="JavaScript"><![CDATA[
                var wasSerDataLoss;
                var serDataLoss = err_serial_dataloss.value;
                if (wasSerDataLoss !== undefined) {
                  if (serDataLoss && !wasSerDataLoss) {
-                   Yamcs.distress('Data loss on serial connection'); 
+                   Yamcs.severe('error: [esp32] Data loss on serial connection'); 
                  } else if (!serDataLoss && wasSerDataLoss) {
-                   Yamcs.info('End of data loss on serial connection');
+                   Yamcs.warning('warning: [esp32] End of data loss on serial connection');
                  }
                }
                wasSerDataLoss = serDataLoss;
