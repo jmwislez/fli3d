@@ -110,10 +110,62 @@
                 </UnitSet>
                 <FloatDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" />
             </FloatParameterType>
+            <IntegerParameterType name="int32_t" signed="true">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="32" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
+            <FloatParameterType name="int32_m_from_cm_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="32" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int32_mps_from_cmps_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="32" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int32_1E7deg_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">°</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="32" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.0000001" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
             <IntegerParameterType name="uint32_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="32" byteOrder="leastSignificantByteFirst" />
             </IntegerParameterType>
+            <FloatParameterType name="uint32_hPa_from_Pa_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">hPa</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="32" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
             <IntegerParameterType name="uint24_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="24" byteOrder="leastSignificantByteFirst" />
@@ -128,10 +180,116 @@
                 </UnitSet>
                 <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
             </IntegerParameterType>
+            <FloatParameterType name="int16_cmps2_from_mps2_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m/s²</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_G_from_mG_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">G</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.001" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_rpm_from_crpm_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">rpm</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_deg_from_cdeg_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">°</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_degps_from_cdegps_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">°/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_degC_from_cdegC_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">°C</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_m_from_cm_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
+            <FloatParameterType name="int16_mps_from_cmps_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">m/s</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosComplement" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                    <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.01" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
             <IntegerParameterType name="uint16_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
             </IntegerParameterType>
+            <FloatParameterType name="uint16_milli_t" signed="false">
+                <UnitSet/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16" byteOrder="leastSignificantByteFirst">
+                <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.001" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
             <IntegerParameterType name="uint16_mem_t" signed="false">
                 <UnitSet>
                     <Unit description="Unit">kB</Unit>
@@ -166,6 +324,12 @@
                 </UnitSet>
                 <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
             </IntegerParameterType>            
+            <IntegerParameterType name="int8_rpm_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">rpm</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="8" />
+            </IntegerParameterType>            
             <IntegerParameterType name="uint8_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
@@ -194,6 +358,18 @@
                 </UnitSet>
                 <IntegerDataEncoding sizeInBits="8" />
             </IntegerParameterType>
+            <FloatParameterType name="uint8_G_t" signed="false">
+                <UnitSet>
+                    <Unit description="Unit">G</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="8" byteOrder="leastSignificantByteFirst">
+                <DefaultCalibrator>
+                        <PolynomialCalibrator>
+                            <Term exponent="1" coefficient="0.1" />
+                        </PolynomialCalibrator>
+                    </DefaultCalibrator>
+                </IntegerDataEncoding>
+            </FloatParameterType>
             <IntegerParameterType name="uint8_angle_t" signed="false">
                 <UnitSet>
                     <Unit description="Unit">°</Unit>
@@ -272,6 +448,10 @@
                     <Enumeration value="2" label="time_only" />
                     <Enumeration value="3" label="standard" />
                     <Enumeration value="4" label="differential" />
+                    <Enumeration value="5" label="rtk_float" />
+                    <Enumeration value="6" label="rtk_fixed" />
+                    <Enumeration value="7" label="status_pps" />
+                    <Enumeration value="8" label="waiting" />
                 </EnumerationList>
             </EnumeratedParameterType>
             <EnumeratedParameterType name="uint4_event_t">
@@ -305,6 +485,26 @@
                     <Enumeration value="10" label="fli3d" />
                     <Enumeration value="11" label="ground" />
                     <Enumeration value="12" label="any" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint2_accel_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="2" />
+                <EnumerationList>
+                    <Enumeration value="0" label="+/-2 g" />
+                    <Enumeration value="1" label="+/-4 g" />
+                    <Enumeration value="2" label="+/-8 g" />
+                    <Enumeration value="3" label="+/-16 g" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint2_gyro_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="2" />
+                <EnumerationList>
+                    <Enumeration value="0" label="+/-250 °/s" />
+                    <Enumeration value="1" label="+/-500 °/s" />
+                    <Enumeration value="2" label="+/-1000 °/s" />
+                    <Enumeration value="3" label="+/-2000 °/s" />
                 </EnumerationList>
             </EnumeratedParameterType>
             <BooleanParameterType name="bool_t">
@@ -559,31 +759,39 @@
 
             <Parameter name="PRESSURE_millis" parameterTypeRef="uint24_t" />
             <Parameter name="PRESSURE_packet_ctr" parameterTypeRef="uint16_t" />
-            <Parameter name="PRESSURE_pressure" parameterTypeRef="float_pressure_t" />
-            <Parameter name="PRESSURE_zero_level_pressure" parameterTypeRef="float_pressure_t" />
-            <Parameter name="PRESSURE_altitude" parameterTypeRef="float_distance_t" />
-            <Parameter name="PRESSURE_velocity_v" parameterTypeRef="float_velocity_t" />
-            <Parameter name="PRESSURE_temperature" parameterTypeRef="float_temperature_t" />
+            <Parameter name="PRESSURE_pressure" parameterTypeRef="uint32_hPa_from_Pa_t" />
+            <Parameter name="PRESSURE_zero_level_pressure" parameterTypeRef="uint32_hPa_from_Pa_t" />
+            <Parameter name="PRESSURE_height" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="PRESSURE_velocity_v" parameterTypeRef="int16_mps_from_cmps_t" />
+            <Parameter name="PRESSURE_temperature" parameterTypeRef="int16_degC_from_cdegC_t" />
+            <Parameter name="PRESSURE_height_valid" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_06" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_05" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_04" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_03" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_02" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_01" parameterTypeRef="bool_t" />
+            <Parameter name="PRESSURE_free_00" parameterTypeRef="bool_t" />
 
             <Parameter name="MOTION_millis" parameterTypeRef="uint24_t" />
             <Parameter name="MOTION_packet_ctr" parameterTypeRef="uint16_t" />
-            <Parameter name="MOTION_accel_x_rocket" parameterTypeRef="float_accel_t" />
-            <Parameter name="MOTION_accel_y_rocket" parameterTypeRef="float_accel_t" />
-            <Parameter name="MOTION_accel_z_rocket" parameterTypeRef="float_accel_t" />
-            <Parameter name="MOTION_gyro_x_rocket" parameterTypeRef="float_rotation_t" />
-            <Parameter name="MOTION_gyro_y_rocket" parameterTypeRef="float_rotation_t" />
-            <Parameter name="MOTION_gyro_z_rocket" parameterTypeRef="float_rotation_t" />
-            <Parameter name="MOTION_tilt" parameterTypeRef="float_angle_t" />
-            <Parameter name="MOTION_g" parameterTypeRef="float_accel_t" />
-            <Parameter name="MOTION_a" parameterTypeRef="float_accel_t" />
-            <Parameter name="MOTION_rpm" parameterTypeRef="float_t" />
-            <Parameter name="MOTION_a_x_rocket_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_a_y_rocket_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_a_z_rocket_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_x_rocket_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_y_rocket_offset" parameterTypeRef="int16_t" />
-            <Parameter name="MOTION_g_z_rocket_offset" parameterTypeRef="int16_t" />
-
+            <Parameter name="MOTION_accel_x" parameterTypeRef="int16_cmps2_from_mps2_t" />
+            <Parameter name="MOTION_accel_y" parameterTypeRef="int16_cmps2_from_mps2_t" />
+            <Parameter name="MOTION_accel_z" parameterTypeRef="int16_cmps2_from_mps2_t" />
+            <Parameter name="MOTION_gyro_x" parameterTypeRef="int16_degps_from_cdegps_t" />
+            <Parameter name="MOTION_gyro_y" parameterTypeRef="int16_degps_from_cdegps_t" />
+            <Parameter name="MOTION_gyro_z" parameterTypeRef="int16_degps_from_cdegps_t" />
+            <Parameter name="MOTION_tilt" parameterTypeRef="int16_deg_from_cdeg_t" />
+            <Parameter name="MOTION_g" parameterTypeRef="int16_G_from_mG_t" />
+            <Parameter name="MOTION_a" parameterTypeRef="int16_cmps2_from_mps2_t" />
+            <Parameter name="MOTION_rpm" parameterTypeRef="int16_rpm_from_crpm_t" />
+            <Parameter name="MOTION_accel_range" parameterTypeRef="uint2_accel_t" />
+            <Parameter name="MOTION_gyro_range" parameterTypeRef="uint2_gyro_t" />
+            <Parameter name="MOTION_accel_valid" parameterTypeRef="bool_t" />
+            <Parameter name="MOTION_gyro_valid" parameterTypeRef="bool_t" />
+            <Parameter name="MOTION_free_01" parameterTypeRef="bool_t" />
+            <Parameter name="MOTION_free_00" parameterTypeRef="bool_t" />
+            
             <Parameter name="GPS_millis" parameterTypeRef="uint24_t" />
             <Parameter name="GPS_packet_ctr" parameterTypeRef="uint16_t" />
             <Parameter name="GPS_status" parameterTypeRef="uint4_gpsstatus_t" />
@@ -591,28 +799,41 @@
             <Parameter name="GPS_hours" parameterTypeRef="uint8_t" />
             <Parameter name="GPS_minutes" parameterTypeRef="uint8_t" />
             <Parameter name="GPS_seconds" parameterTypeRef="uint8_t" />
-            <Parameter name="GPS_latitude" parameterTypeRef="float_angle_t" />
-            <Parameter name="GPS_longitude" parameterTypeRef="float_angle_t" />
-            <Parameter name="GPS_altitude" parameterTypeRef="float_distance_t" />
-            <Parameter name="GPS_latitude_zero" parameterTypeRef="float_angle_t" />
-            <Parameter name="GPS_longitude_zero" parameterTypeRef="float_angle_t" />
-            <Parameter name="GPS_altitude_zero" parameterTypeRef="float_distance_t" />
-            <Parameter name="GPS_x" parameterTypeRef="int16_distance_t" />
-            <Parameter name="GPS_y" parameterTypeRef="int16_distance_t" />
-            <Parameter name="GPS_z" parameterTypeRef="int16_distance_t" />
-            <Parameter name="GPS_v_north" parameterTypeRef="float_velocity_t" />
-            <Parameter name="GPS_v_east" parameterTypeRef="float_velocity_t" />
-            <Parameter name="GPS_v_down" parameterTypeRef="float_velocity_t" />
-            <Parameter name="GPS_milli_hdop" parameterTypeRef="uint16_t" />
-            <Parameter name="GPS_milli_vdop" parameterTypeRef="uint16_t" />
+            <Parameter name="GPS_centiseconds" parameterTypeRef="uint8_t" />
+            <Parameter name="GPS_latitude" parameterTypeRef="int32_1E7deg_t" />
+            <Parameter name="GPS_longitude" parameterTypeRef="int32_1E7deg_t" />
+            <Parameter name="GPS_altitude" parameterTypeRef="int32_m_from_cm_t" />
+            <Parameter name="GPS_latitude_zero" parameterTypeRef="int32_1E7deg_t" />
+            <Parameter name="GPS_longitude_zero" parameterTypeRef="int32_1E7deg_t" />
+            <Parameter name="GPS_altitude_zero" parameterTypeRef="int32_m_from_cm_t" />
+            <Parameter name="GPS_x" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_y" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_z" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_x_err" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_y_err" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_z_err" parameterTypeRef="int16_m_from_cm_t" />
+            <Parameter name="GPS_v_north" parameterTypeRef="int32_mps_from_cmps_t" />
+            <Parameter name="GPS_v_east" parameterTypeRef="int32_mps_from_cmps_t" />
+            <Parameter name="GPS_v_down" parameterTypeRef="int32_mps_from_cmps_t" />
+            <Parameter name="GPS_milli_hdop" parameterTypeRef="uint16_milli_t" />
+            <Parameter name="GPS_milli_vdop" parameterTypeRef="uint16_milli_t" />
+            <Parameter name="GPS_milli_pdop" parameterTypeRef="uint16_milli_t" />
             <Parameter name="GPS_time_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_location_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_altitude_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_speed_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_hdop_valid" parameterTypeRef="bool_t" />
             <Parameter name="GPS_vdop_valid" parameterTypeRef="bool_t" />
-            <Parameter name="GPS_free_01" parameterTypeRef="bool_t" />
-            <Parameter name="GPS_free_00" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_pdop_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_error_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_offset_valid" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_16" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_15" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_14" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_13" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_12" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_11" parameterTypeRef="bool_t" />
+            <Parameter name="GPS_free_10" parameterTypeRef="bool_t" />
 
             <Parameter name="RADIO_millis" parameterTypeRef="uint24_t" />
             <Parameter name="RADIO_packet_ctr" parameterTypeRef="uint16_t" />
@@ -623,18 +844,18 @@
             <Parameter name="RADIO_camera_active" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_error_ctr" parameterTypeRef="uint8_t" />
             <Parameter name="RADIO_warning_ctr" parameterTypeRef="uint8_t" /> 
-            <Parameter name="RADIO_pressure_altitude" parameterTypeRef="uint8_distance_t" />
+            <Parameter name="RADIO_pressure_height" parameterTypeRef="uint8_distance_t" />
             <Parameter name="RADIO_pressure_velocity_v" parameterTypeRef="int8_velocity_t" />
             <Parameter name="RADIO_temperature" parameterTypeRef="int8_temperature_t" />
             <Parameter name="RADIO_motion_tilt" parameterTypeRef="uint8_angle_t" />
-            <Parameter name="RADIO_motion_g" parameterTypeRef="uint8_accel_t" />
+            <Parameter name="RADIO_motion_g" parameterTypeRef="uint8_G_t" />
             <Parameter name="RADIO_motion_a" parameterTypeRef="int8_accel_t" />
-            <Parameter name="RADIO_motion_rpm" parameterTypeRef="int8_t" />
-            <Parameter name="RADIO_gps_satellites" parameterTypeRef="uint4_t" />
+            <Parameter name="RADIO_motion_rpm" parameterTypeRef="int8_rpm_t" />
+            <Parameter name="RADIO_gps_satellites" parameterTypeRef="uint8_t" />
             <Parameter name="RADIO_gps_velocity_v" parameterTypeRef="int8_velocity_t" />
             <Parameter name="RADIO_gps_velocity" parameterTypeRef="uint8_velocity_t" />
-            <Parameter name="RADIO_gps_altitude" parameterTypeRef="uint8_distance_t" />
-            <Parameter name="RADIO_camera_image_ctr" parameterTypeRef="uint8_t" />    
+            <Parameter name="RADIO_gps_height" parameterTypeRef="uint8_distance_t" />
+            <Parameter name="RADIO_camera_image_ctr" parameterTypeRef="uint16_t" />    
             <Parameter name="RADIO_esp32_serial_connected" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_esp32_wifi_connected" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_esp32_warn_serial_connloss" parameterTypeRef="bool_t" />
@@ -896,9 +1117,17 @@
                     <ParameterRefEntry parameterRef="PRESSURE_packet_ctr" />
                     <ParameterRefEntry parameterRef="PRESSURE_pressure" />
                     <ParameterRefEntry parameterRef="PRESSURE_zero_level_pressure" />
-                    <ParameterRefEntry parameterRef="PRESSURE_altitude" />
+                    <ParameterRefEntry parameterRef="PRESSURE_height" />
                     <ParameterRefEntry parameterRef="PRESSURE_velocity_v" />
                     <ParameterRefEntry parameterRef="PRESSURE_temperature" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_00" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_01" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_02" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_03" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_04" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_05" />
+                    <ParameterRefEntry parameterRef="PRESSURE_free_06" />
+                    <ParameterRefEntry parameterRef="PRESSURE_height_valid" />
                 </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d tm_motion">
@@ -913,22 +1142,22 @@
                 <EntryList>
                     <ParameterRefEntry parameterRef="MOTION_millis" />
                     <ParameterRefEntry parameterRef="MOTION_packet_ctr" />
-                    <ParameterRefEntry parameterRef="MOTION_accel_x_rocket" />
-                    <ParameterRefEntry parameterRef="MOTION_accel_y_rocket" />
-                    <ParameterRefEntry parameterRef="MOTION_accel_z_rocket" />
-                    <ParameterRefEntry parameterRef="MOTION_gyro_x_rocket" />
-                    <ParameterRefEntry parameterRef="MOTION_gyro_y_rocket" />
-                    <ParameterRefEntry parameterRef="MOTION_gyro_z_rocket" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_x" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_y" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_z" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_x" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_y" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_z" />
                     <ParameterRefEntry parameterRef="MOTION_tilt" />
                     <ParameterRefEntry parameterRef="MOTION_g" />
                     <ParameterRefEntry parameterRef="MOTION_a" />
                     <ParameterRefEntry parameterRef="MOTION_rpm" />
-                    <ParameterRefEntry parameterRef="MOTION_a_x_rocket_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_a_y_rocket_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_a_z_rocket_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_x_rocket_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_y_rocket_offset" />
-                    <ParameterRefEntry parameterRef="MOTION_g_z_rocket_offset" />
+                    <ParameterRefEntry parameterRef="MOTION_free_00" />
+                    <ParameterRefEntry parameterRef="MOTION_free_01" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_valid" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_valid" />
+                    <ParameterRefEntry parameterRef="MOTION_gyro_range" />
+                    <ParameterRefEntry parameterRef="MOTION_accel_range" />
                 </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d tm_gps">
@@ -948,6 +1177,7 @@
                     <ParameterRefEntry parameterRef="GPS_hours" />
                     <ParameterRefEntry parameterRef="GPS_minutes" />
                     <ParameterRefEntry parameterRef="GPS_seconds" />
+                    <ParameterRefEntry parameterRef="GPS_centiseconds" />
                     <ParameterRefEntry parameterRef="GPS_latitude" />
                     <ParameterRefEntry parameterRef="GPS_longitude" />
                     <ParameterRefEntry parameterRef="GPS_altitude" />
@@ -957,19 +1187,31 @@
                     <ParameterRefEntry parameterRef="GPS_x" />
                     <ParameterRefEntry parameterRef="GPS_y" />
                     <ParameterRefEntry parameterRef="GPS_z" />
+                    <ParameterRefEntry parameterRef="GPS_x_err" />
+                    <ParameterRefEntry parameterRef="GPS_y_err" />
+                    <ParameterRefEntry parameterRef="GPS_z_err" />
                     <ParameterRefEntry parameterRef="GPS_v_north" />
                     <ParameterRefEntry parameterRef="GPS_v_east" />
                     <ParameterRefEntry parameterRef="GPS_v_down" />
                     <ParameterRefEntry parameterRef="GPS_milli_hdop" />
                     <ParameterRefEntry parameterRef="GPS_milli_vdop" />
-                    <ParameterRefEntry parameterRef="GPS_free_00" />
-                    <ParameterRefEntry parameterRef="GPS_free_01" />
+                    <ParameterRefEntry parameterRef="GPS_milli_pdop" />
+                    <ParameterRefEntry parameterRef="GPS_error_valid" />
+                    <ParameterRefEntry parameterRef="GPS_pdop_valid" />
                     <ParameterRefEntry parameterRef="GPS_vdop_valid" />
                     <ParameterRefEntry parameterRef="GPS_hdop_valid" />
                     <ParameterRefEntry parameterRef="GPS_speed_valid" />
                     <ParameterRefEntry parameterRef="GPS_altitude_valid" />
                     <ParameterRefEntry parameterRef="GPS_location_valid" />
                     <ParameterRefEntry parameterRef="GPS_time_valid" />
+                    <ParameterRefEntry parameterRef="GPS_free_10" />
+                    <ParameterRefEntry parameterRef="GPS_free_11" />
+                    <ParameterRefEntry parameterRef="GPS_free_12" />
+                    <ParameterRefEntry parameterRef="GPS_free_13" />
+                    <ParameterRefEntry parameterRef="GPS_free_14" />
+                    <ParameterRefEntry parameterRef="GPS_free_15" />
+                    <ParameterRefEntry parameterRef="GPS_free_16" />
+                    <ParameterRefEntry parameterRef="GPS_offset_valid" />
                 </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d tm_radio">
@@ -991,7 +1233,7 @@
                     <ParameterRefEntry parameterRef="RADIO_opsmode" />
                     <ParameterRefEntry parameterRef="RADIO_error_ctr" />
                     <ParameterRefEntry parameterRef="RADIO_warning_ctr" />
-                    <ParameterRefEntry parameterRef="RADIO_pressure_altitude" />
+                    <ParameterRefEntry parameterRef="RADIO_pressure_height" />
                     <ParameterRefEntry parameterRef="RADIO_pressure_velocity_v" />
                     <ParameterRefEntry parameterRef="RADIO_temperature" />
                     <ParameterRefEntry parameterRef="RADIO_motion_tilt" />
@@ -1001,7 +1243,7 @@
                     <ParameterRefEntry parameterRef="RADIO_gps_satellites" />
                     <ParameterRefEntry parameterRef="RADIO_gps_velocity_v" />
                     <ParameterRefEntry parameterRef="RADIO_gps_velocity" />
-                    <ParameterRefEntry parameterRef="RADIO_gps_altitude" />
+                    <ParameterRefEntry parameterRef="RADIO_gps_height" />
                     <ParameterRefEntry parameterRef="RADIO_camera_image_ctr" />
                     <ParameterRefEntry parameterRef="RADIO_separation_sts" />
                     <ParameterRefEntry parameterRef="RADIO_esp32_err_fs_dataloss" />
