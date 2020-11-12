@@ -382,36 +382,30 @@
                 </UnitSet>
                 <IntegerDataEncoding sizeInBits="8" />
             </IntegerParameterType>
-            <EnumeratedParameterType name="uint8_opsmode_t">
+            <EnumeratedParameterType name="uint2_opsmode_t">
                 <UnitSet/>
-                <IntegerDataEncoding sizeInBits="8" />
+                <IntegerDataEncoding sizeInBits="2" />
                 <EnumerationList>
                     <Enumeration value="0" label="init" />
                     <Enumeration value="1" label="checkout" />
-                    <Enumeration value="2" label="ready" />
-                    <Enumeration value="3" label="thrust" />
-                    <Enumeration value="4" label="freefall" />
-                    <Enumeration value="5" label="parachute" />
-                    <Enumeration value="6" label="static" />
+                    <Enumeration value="2" label="nominal" />
+                    <Enumeration value="3" label="done" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+            <EnumeratedParameterType name="uint2_state_t">
+                <UnitSet/>
+                <IntegerDataEncoding sizeInBits="2" />
+                <EnumerationList>
+                    <Enumeration value="0" label="static" />
+                    <Enumeration value="1" label="thrust" />
+                    <Enumeration value="2" label="freefall" />
+                    <Enumeration value="3" label="parachute" />
                 </EnumerationList>
             </EnumeratedParameterType>
             <IntegerParameterType name="uint4_t" signed="false">
                 <UnitSet/>
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="4" />
             </IntegerParameterType>
-            <EnumeratedParameterType name="uint4_opsmode_t">
-                <UnitSet/>
-                <IntegerDataEncoding sizeInBits="4" />
-                <EnumerationList>
-                    <Enumeration value="0" label="init" />
-                    <Enumeration value="1" label="checkout" />
-                    <Enumeration value="2" label="ready" />
-                    <Enumeration value="3" label="thrust" />
-                    <Enumeration value="4" label="freefall" />
-                    <Enumeration value="5" label="parachute" />
-                    <Enumeration value="6" label="static" />
-                </EnumerationList>
-            </EnumeratedParameterType>
             <EnumeratedParameterType name="uint4_cammode_t">
                 <UnitSet/>
                 <IntegerDataEncoding sizeInBits="4" />
@@ -633,7 +627,8 @@
         
             <Parameter name="ESP32_millis" parameterTypeRef="uint24_t" />
             <Parameter name="ESP32_packet_ctr" parameterTypeRef="uint16_t" />
-            <Parameter name="ESP32_opsmode" parameterTypeRef="uint4_opsmode_t" />
+            <Parameter name="ESP32_opsmode" parameterTypeRef="uint2_opsmode_t" />
+            <Parameter name="ESP32_state" parameterTypeRef="uint2_state_t" />
             <Parameter name="ESP32_free" parameterTypeRef="uint4_t" />
             <Parameter name="ESP32_error_ctr" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32_warning_ctr" parameterTypeRef="uint8_t" />
@@ -837,7 +832,8 @@
 
             <Parameter name="RADIO_millis" parameterTypeRef="uint24_t" />
             <Parameter name="RADIO_packet_ctr" parameterTypeRef="uint16_t" />
-            <Parameter name="RADIO_opsmode" parameterTypeRef="uint4_opsmode_t" />
+            <Parameter name="RADIO_opsmode" parameterTypeRef="uint2_opsmode_t" />
+            <Parameter name="RADIO_state" parameterTypeRef="uint2_state_t" />
             <Parameter name="RADIO_pressure_active" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_motion_active" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_gps_active" parameterTypeRef="bool_t" />
@@ -957,6 +953,7 @@
                     <ParameterRefEntry parameterRef="ESP32_millis" />
                     <ParameterRefEntry parameterRef="ESP32_packet_ctr" />
                     <ParameterRefEntry parameterRef="ESP32_free" />
+                    <ParameterRefEntry parameterRef="ESP32_state" />
                     <ParameterRefEntry parameterRef="ESP32_opsmode" />
                     <ParameterRefEntry parameterRef="ESP32_error_ctr" />
                     <ParameterRefEntry parameterRef="ESP32_warning_ctr" />
@@ -1230,6 +1227,7 @@
                     <ParameterRefEntry parameterRef="RADIO_gps_active" />
                     <ParameterRefEntry parameterRef="RADIO_motion_active" />
                     <ParameterRefEntry parameterRef="RADIO_pressure_active" />
+                    <ParameterRefEntry parameterRef="RADIO_state" />
                     <ParameterRefEntry parameterRef="RADIO_opsmode" />
                     <ParameterRefEntry parameterRef="RADIO_error_ctr" />
                     <ParameterRefEntry parameterRef="RADIO_warning_ctr" />
