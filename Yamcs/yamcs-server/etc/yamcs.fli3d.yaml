@@ -36,6 +36,11 @@ dataLinks:
     stream: tc_realtime
     host: 192.168.2.38
     port: 10052
+  - name: esp32-udp-out-test
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.242
+    port: 10052
   - name: esp32cam-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
@@ -47,15 +52,20 @@ dataLinks:
   - name: esp32cam-udp-out
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: 192.168.2.39
+    host: 192.168.2.40
     port: 10053
+  - name: esp32cam-udp-out-test
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.201
+    port: 10053    
 
 mdb:
   # Configuration of the active loaders
   # Valid loaders are: sheet, xtce or fully qualified name of the class
   - type: xtce
     args:
-      file: mdb/xtce.fli3d.xml
+      file: C:\Users\jmw\Documents\fli3d\Yamcs\yamcs-server\mdb\xtce.fli3d.xml
 
 # Configuration for streams created at server startup
 streamConfig:

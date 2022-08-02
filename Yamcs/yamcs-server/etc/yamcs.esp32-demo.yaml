@@ -38,7 +38,7 @@ mdb:
   # Valid loaders are: sheet, xtce or fully qualified name of the class
   - type: xtce
     args:
-      file: mdb/xtce.esp32-demo.xml
+      file: C:\Users\jmw\Documents\fli3d\Yamcs\yamcs-server\mdb\xtce.esp32-demo.xml
 
 # Configuration for streams created at server startup
 streamConfig:

@@ -740,7 +740,7 @@
             <Parameter name="ESP32CAM_fs_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_sd_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_ftp_enabled" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_free_24" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32CAM_ota_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_sd_image_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_sd_json_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_sd_ccsds_enabled" parameterTypeRef="bool_t" />
@@ -758,7 +758,7 @@
             <Parameter name="ESP32CAM_sd_active" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_ftp_active" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_buffer_active" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32CAM_free_42" parameterTypeRef="bool_t" />            
+            <Parameter name="ESP32CAM_http_active" parameterTypeRef="bool_t" />            
             <Parameter name="ESP32CAM_free_41" parameterTypeRef="bool_t" />
             <Parameter name="ESP32CAM_free_40" parameterTypeRef="bool_t" />
 
@@ -1098,7 +1098,7 @@
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_ccsds_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_json_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_image_enabled" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_free_24" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_ota_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_ftp_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_enabled" />
                     <ParameterRefEntry parameterRef="ESP32CAM_fs_enabled" />
@@ -1114,7 +1114,7 @@
 		   
 		    <ParameterRefEntry parameterRef="ESP32CAM_free_40" />
                     <ParameterRefEntry parameterRef="ESP32CAM_free_41" />
-                    <ParameterRefEntry parameterRef="ESP32CAM_free_42" />
+                    <ParameterRefEntry parameterRef="ESP32CAM_http_active" />
                     <ParameterRefEntry parameterRef="ESP32CAM_buffer_active" />
                     <ParameterRefEntry parameterRef="ESP32CAM_ftp_active" />
                     <ParameterRefEntry parameterRef="ESP32CAM_sd_active" />  
@@ -1283,10 +1283,10 @@
                     <ParameterRefEntry parameterRef="RADIO_motion_g" />
                     <ParameterRefEntry parameterRef="RADIO_motion_a" />
                     <ParameterRefEntry parameterRef="RADIO_motion_rpm" />
-                    <ParameterRefEntry parameterRef="RADIO_esp32_buffer_active" />
-                    <ParameterRefEntry parameterRef="RADIO_esp32cam_buffer_active" />
-                    <ParameterRefEntry parameterRef="RADIO_esp32cam_sd_image_enabled" />
                     <ParameterRefEntry parameterRef="RADIO_esp32cam_wifi_image_enabled" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_sd_image_enabled" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32cam_buffer_active" />
+                    <ParameterRefEntry parameterRef="RADIO_esp32_buffer_active" />
                     <ParameterRefEntry parameterRef="RADIO_gps_satellites" />
                     <ParameterRefEntry parameterRef="RADIO_gps_velocity_v" />
                     <ParameterRefEntry parameterRef="RADIO_gps_velocity" />
@@ -1484,6 +1484,26 @@
                     <Argument name="opsmode" argumentTypeRef="uint8_opsmode_t"/>
                 </ArgumentList>
                 <CommandContainer name="ESP32_set_opsmode">
+                    <EntryList>
+                        <FixedValueEntry binaryValue="2b" sizeInBits="8"/> <!-- cmdId: 43 -->
+                        <ArgumentRefEntry argumentRef="opsmode"/>
+                    </EntryList>
+                    <BaseContainer containerRef="CCSDS_TC_container"/>
+                </CommandContainer>
+            </MetaCommand>
+            
+            <MetaCommand name="ESP32CAM_set_opsmode">
+                <LongDescription>Set operations mode of Fli3d ESP32CAM</LongDescription>
+                <BaseMetaCommand metaCommandRef="CCSDS_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="CCSDS_APID" argumentValue="54"/> 
+                        <ArgumentAssignment argumentName="CCSDS_PacketLength" argumentValue="1"/> 
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument name="opsmode" argumentTypeRef="uint8_opsmode_t"/>
+                </ArgumentList>
+                <CommandContainer name="ESP32CAM_set_opsmode">
                     <EntryList>
                         <FixedValueEntry binaryValue="2b" sizeInBits="8"/> <!-- cmdId: 43 -->
                         <ArgumentRefEntry argumentRef="opsmode"/>
