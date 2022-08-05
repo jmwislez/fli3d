@@ -869,11 +869,11 @@
             <Parameter name="RADIO_motion_g" parameterTypeRef="uint8_G_t" />
             <Parameter name="RADIO_motion_a" parameterTypeRef="int8_accel_t" />
             <Parameter name="RADIO_motion_rpm" parameterTypeRef="int8_rpm_t" />
-            <Parameter name="RADIO_gps_satellites" parameterTypeRef="uint4_t" />
-            <Parameter name="RADIO_esp32_buffer_active" parameterTypeRef="bool_t" />
-            <Parameter name="RADIO_esp32cam_buffer_active" parameterTypeRef="bool_t" />
-            <Parameter name="RADIO_esp32cam_sd_image_enabled" parameterTypeRef="bool_t" />
             <Parameter name="RADIO_esp32cam_wifi_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32cam_sd_image_enabled" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32cam_buffer_active" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_esp32_buffer_active" parameterTypeRef="bool_t" />
+            <Parameter name="RADIO_gps_satellites" parameterTypeRef="uint4_t" />
             <Parameter name="RADIO_gps_velocity_v" parameterTypeRef="int8_velocity_t" />
             <Parameter name="RADIO_gps_velocity" parameterTypeRef="uint8_velocity_t" />
             <Parameter name="RADIO_gps_height" parameterTypeRef="uint8_distance_t" />
