@@ -2,9 +2,9 @@
 
 ## Overview
 <img src="https://github.com/jmwislez/fli3d/blob/master/Configuration/fli3d%20block%20diagram.png">
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20closed%20v4.png" width="600px">
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png" width="600px">
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%202.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20closed%20v4.2.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4.2%20-%201.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4.2%20-%202.png" width="600px">
 
 ## ESP32 minikit MH-ET Live
 
@@ -103,7 +103,7 @@ There is not much physical space available for wire routing or connection.  Orig
 
 An overview of the wiring connections is given below.
 
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/wiring%20fli3d.png" width="800px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/Fli3d%20wiring.png" width="800px">
 
 ## Structure
 
