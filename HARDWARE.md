@@ -111,7 +111,7 @@ The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a 
 
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4.2%20-%201.png" width="600px">
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4.2%20-%202.png" width="600px">
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4.2%20fairing.png" height="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20v4.2%20fairing.png" height="400px">
 
 The FreeCAD design files are here: https://github.com/jmwislez/fli3d/tree/master/Hardware/Structure
 
