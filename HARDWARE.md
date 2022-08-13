@@ -25,11 +25,11 @@ Note that not any combination of pins works, as there seem to be hidden conflict
   
 The software was developed in Arduino IDE, and can be found in the following repository: https://github.com/jmwislez/fli3d-esp32 
 
-I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/fli3d/blob/master/Hardware/ESP32%20mini%20kit/ESP32minikit.FCStd
+I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/fli3d/blob/master/Hardware/Electronics/ESP32%20mini%20kit/ESP32minikit.FCStd
 
 Some more details on this board's hardware: https://riot-os.org/api/group__boards__esp32__mh-et-live-minikit.html
 
-The board costs less than 5 euros, and weighs only XXXX g.
+The board costs less than 2 euros, and weighs only 8 g.
 
 ## AI Thinker ESP32-CAM
 
@@ -43,13 +43,13 @@ The board interfaces to the ESP32 minikit over the serial connection.  All acqui
 
 The ESP32-CAM module allows the connection of an external WiFi antenna.  For this, it is however needed to unsolder and resolder a tiny SMD bridge connection on the board.  I attached a laptop WiFi antenna, but did not yet do the rerouting.  I intend to test whether the external antenna does yield a better WiFi range.
 
-Note that the ESP32-CAM module is slightly more cumbersome to flash than other development boards.  It does not feature an USB connector, so the flashing needs to be done via an USB to serial converter.  It is also needed to ground GPIO0 during flashing, and unground the pin and press the reset button in order to run the firmware.  So that's a lot of small manipulations, especially if the serial interface needs to be rewired after flashing.  Also OTA update cannot be used, since the memory is needed for the images.  Still, one gets used to this.  I intend to investigate software flashing using the SD card, which would make software updates possible without disassembly once the board is embedded into the payload structure.
+Note that the ESP32-CAM module is slightly more cumbersome to flash than other development boards.  It does not feature an USB connector, so the flashing needs to be done via an USB to serial converter.  It is also needed to ground GPIO0 during flashing, and unground the pin and press the reset button in order to run the firmware.  So that's a lot of small manipulations, especially if the serial interface needs to be rewired after flashing.  Hence OTA update is strongly preferred, using "minimal SPIFFS" partitioning.
 
-Most ESP32 connectivity is in use by the camera and SD card module, so do not expect to squeeze any more out of this module.  There is even a double use of pin GPIO 4, which makes the on-board flashlight blink when addressing the SD card.  This is annoying, but unavoidable by hardware design.  The only further use I make of this board is using its 3.3V power source for powering the WL102-241 radio transmitter.  I could have done this from the ESP32 minikit board, but routing was more practical this way. 
+Most ESP32 connectivity is in use by the camera and SD card module, so do not expect to squeeze any more out of this module.  There is even a double use of pin GPIO 4, which makes the on-board flashlight blink when addressing the SD card.  This is annoying, but unavoidable by hardware design.  
 
 The software was developed in Arduino IDE, and can be found in the following repository: https://github.com/jmwislez/fli3d-esp32cam 
 
-A schematic of the board is available here: https://github.com/jmwislez/fli3d/blob/master/Hardware/ESP32-CAM%20microcontroller%20%2B%20camera/ESP32_CAM_V1.6.pdf
+A schematic of the board is available here: https://github.com/jmwislez/fli3d/blob/master/Hardware/Electronics/ESP32-CAM%20microcontroller%20%2B%20camera/ESP32_CAM_V1.6.pdf
 
 ## NEO6MV2 GPS sensor
 
@@ -57,19 +57,19 @@ It is astonishingly easy and cheap to integrate GPS functionality.  The NEO6MV2 
 
 The GPS module is connected to ESP32 minikit over serial at 57600 baud.  Default speed is 9600 baud.  I tried 115200 baud too, but sometimes the serial line would not synchronize at that speed.
 
-I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/fli3d/blob/master/Hardware/NEO6MV2%20gps/neo6mv2.FCStd
+I defined a basic 3D model of the board in FreeCAD: https://github.com/jmwislez/fli3d/blob/master/Hardware/Electronics/NEO6MV2%20gps/neo6mv2.FCStd
 
 The user manual is here: https://github.com/jmwislez/fli3d/blob/master/Hardware/NEO6MV2%20gps/U-blox-6-Receiver-Description-Including-Protocol-Specification.pdf
 
 ## MPU6050 accelerometer/gyroscope sensor
 
-The MPU6050 provides a 6 DOF motion sensor over an I2C bus.  It provides passthrough functionality, which is used to connect the BMP280 sensor.  Initially I had hoped to use the sensor for internal navigation, i.e. determine position, speed, and orientation by integrating the acceleration/gyroscope readings.  The sensor is far from being sufficiently precise for this: it is even non trivial to get some usable data out of it.  There is a Digital Motion Processor on-board, but this functionality was hard to use, unstable, and did not help me to get what I needed.  Hence, I ended up doing my own naive calibration.   
+The MPU6050 provides a 6 DOF motion sensor over an I2C bus.  It provides passthrough functionality, which is used to connect the BMP280 sensor.  Initially I had hoped to use the sensor for internal navigation, i.e. determine position, speed, and orientation by integrating the acceleration/gyroscope readings.  The sensor is far from being sufficiently precise for this: it is even non trivial to get some usable data out of it.  There is a Digital Motion Processor on-board, but this functionality was hard to use, looked unstable to me, and did not help me to get what I needed.  Hence, I ended up doing my own naive calibration, which for now is still worthless.   
 
 In a next version of Fli3d, it's probably worth looking at MPU9255, which also includes a 3D compass and can therefore more reliably provide orientation.  That board is slightly bigger, and would require a mechanical redesign of the Fli3d structure.
 
 Mechanically, the board is mounted so that the sensor is on the rocket's central axis.  The X/Y/Z axes of the sensor correspond to Z/X/Y axes of the rocket.
 
-The documentation of the board is extensive (https://github.com/jmwislez/fli3d/tree/master/Hardware/MPU6050%206DOF%20motion%20sensor), but lacks precision to harvest the full power of the chip.
+The documentation of the board is extensive (https://github.com/jmwislez/fli3d/tree/master/Hardware/Electronics/MPU6050%206DOF%20motion%20sensor/), but lacks precision to harvest the full power of the chip.
 
 ## BMP280 barometer sensor
 
@@ -77,29 +77,33 @@ The BMP280 is a small, simple, but neat little board with a very sensitive barom
 
 The board is connected over I2C, as an auxiliary board of the MPU6050.
 
-The user manual of the chip is here: https://github.com/jmwislez/fli3d/blob/master/Hardware/BMP280%20pressure%20sensor/BST-BMP280-DS001-11.pdf
+The user manual of the chip is here: https://github.com/jmwislez/fli3d/blob/master/Hardware/Electronics/BMP280%20pressure%20sensor/BST-BMP280-DS001-11.pdf
 
 ## WL102-341 433MHz radio transmitter and antenna
 
-Not knowing the stability of the WiFi connection in flight, I decided to add a 433 MHz transmitter on board, for transmission of basic telemetry.  Moreover, this can serve as a beacon for Doppler measurements, which can later be correlated to the determined flight path.
+Not knowing the stability of the WiFi connection in flight, I decided to add a 433 MHz transmitter on board, for transmission of a summary of the telemetry.  Moreover, this could serve as a beacon for Doppler measurements, which could later be correlated to the determined flight path.  This is not done yet.
 
-This is the only board in the stack that needs to be powered at 3.3V instead of 5V.  This power is provided by the ESP32-CAM board, for ease of wiring.
+This is the only board in the stack that needs to be powered at 3.3V instead of 5V.  This power is provided by the ESP32 minikit board.
 
 The signal feeding the transmitter is digital output IO26 of the ESP32 minikit board, and this OOK (on/off keying) signal is then transmitted as is by switching the transmitter on and off.
 
-The antenna for the 433 MHz is screwed on top of the rocket.
+The antenna for the 433 MHz is screwed on top of the rocket, and also holds the fairing in place.
 
 ## Battery and 134N3P battery charger
 
-The on-board battery is a 240 mAh 3.7V Li-ION battery.  This should provide an autonomy of roughly 20 minutes for a fully active system.  
+The on-board battery is a 300 mAh 3.7V Li-ION battery.  This provides an autonomy of roughly 20 minutes for a fully active system.  
 
 The battery is not directly driving the Fli3d electronics, but connected to a 134N3P battery charger.  This is basically a circuit as used in power banks.  It converts the battery output to a steady 5V, it allow charging the battery, and while connected for charging, 5V is neatly provided.  Hence, it allows for tethered operations, and just before launch the power tether can be detached, and Fli3d is seamlessly on autonomous power with a fully charged battery.
 
-Mechanically, the type A USB connector on the board needs to be unsoldered.  Also, the voltage of the battery will be monitored by an ADC input the ESP32 minikit board.  This should allow to give live view on the battery charging status.
+Mechanically, the type A USB connector on the board needs to be unsoldered.  
 
 ## Wiring
 
-There is not much physical space available for wire routing or connection.  Originally, I intended to use directly soldered wire connections, and to unsolder the headers where the boards came with headers pre-mounted.  The latter was not easy given my limited soldering skills and equipment, so I decided to keep th e headers and use a combination of header sockets and direct soldering.  
+There is not much physical space available for wire routing or connection.  Originally, I intended to use directly soldered wire connections for reliability, and to unsolder the headers where the boards came with headers pre-mounted.  The latter was not easy given my limited soldering skills and equipment, so I decided to keep the headers and use a combination of header sockets and direct soldering.
+
+Friction connectors without latching do not perform well under mechanical stress, and the assembly is fragile and hard to repair.  Hence, the haressing is something that could definitely be improved.
+
+Two rows of 8-pin female 2.54mm sockets are used for VCC and GND distribution.
 
 An overview of the wiring connections is given below.
 
@@ -107,7 +111,7 @@ An overview of the wiring connections is given below.
 
 ## Structure
 
-The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a Prusa i3 clone printer.  Assembly is mainly done with M2.5 screws and contact glue.
+The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a Prusa i3 clone printer.  Total mass is 30 grams.  Assembly is mainly done with M2.5 screws and contact glue.
 
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4.2%20-%201.png" width="600px">
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20structure%20v4.2%20-%202.png" width="600px">
