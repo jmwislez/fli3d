@@ -4,7 +4,7 @@
 
 Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 (well, 2022 :'-( ) edition of the Belgian "Fri3d Camp" hacker event (https://www.fri3d.be/). Its purpose is to develop and launch an ESP32 payload on top of a microrocket.  And this payload needs to be as cool as possible ...
 
-<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4%20-%201.png" width="800px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4.2%20-%201.png" width="800px">
 
 The name is obviously derived from "Fri3d Camp", and hints to the "Chinese electronics" used to build it.
 
