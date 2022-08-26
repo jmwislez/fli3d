@@ -39,6 +39,8 @@ Each flight will be designated through a successive starting letter, and have a 
   - ...
   - Fli3d Rice
 
+Fli3d Chicken is not on a micro-rocket, but on a weather balloon.  A special casing was developed for this configuration.
+
 ## Available documentation and repositories
 
   - https://github.com/jmwislez/fli3d :

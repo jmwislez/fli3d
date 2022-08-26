@@ -109,7 +109,7 @@ An overview of the wiring connections is given below.
 
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Wiring/Fli3d%20wiring.png" width="800px">
 
-## Structure
+## Structure for micro-rocket version
 
 The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a Prusa i3 clone printer.  Total mass is 30 grams.  Assembly is mainly done with M2.5 screws and contact glue.
 
@@ -120,3 +120,12 @@ The Fli3d structure was designed using FreeCAD, and is 3D printed with PLA on a 
 The FreeCAD design files are here: https://github.com/jmwislez/fli3d/tree/master/Hardware/Structure
 
 Each structural element coloured differently needs to be printed separately.
+
+# Structure for weather balloon version
+
+Another version of the structure was produced for flying Fli3d on a weather balloon, for flight "Fli3d Chicken".  
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/Hardware%20for%20weather%20balloon.png" width="600px">
+<img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/Hardware%20for%20weather%20balloon%202.png" width="600px">
+
+The FreeCAD design files are here: https://github.com/jmwislez/fli3d/tree/master/Hardware/Structure
