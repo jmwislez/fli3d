@@ -180,6 +180,12 @@
                 </UnitSet>
                 <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
             </IntegerParameterType>
+            <IntegerParameterType name="int16_uT_t" signed="true">
+                <UnitSet>
+                    <Unit description="Unit">μT</Unit>
+                </UnitSet>
+                <IntegerDataEncoding encoding="twosCompliment" sizeInBits="16" byteOrder="leastSignificantByteFirst" />
+            </IntegerParameterType>
             <FloatParameterType name="int16_cmps2_from_mps2_t" signed="true">
                 <UnitSet>
                     <Unit description="Unit">m/s²</Unit>
@@ -671,6 +677,7 @@
             <Parameter name="ESP32_serial_out_buffer" parameterTypeRef="uint8_t" />
             <Parameter name="ESP32_mem_free" parameterTypeRef="uint16_kB_t" />
             <Parameter name="ESP32_fs_free" parameterTypeRef="uint16_kB_t" />
+            <Parameter name="ESP32_temperature" parameterTypeRef="int16_degC_from_cdegC_t" />
             <Parameter name="ESP32_radio_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_pressure_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_motion_enabled" parameterTypeRef="bool_t" />
@@ -682,7 +689,7 @@
             <Parameter name="ESP32_fs_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_ftp_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_ota_enabled" parameterTypeRef="bool_t" />
-            <Parameter name="ESP32_free_24" parameterTypeRef="bool_t" />
+            <Parameter name="ESP32_temperature_enabled" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_free_23" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_free_22" parameterTypeRef="bool_t" />
             <Parameter name="ESP32_free_21" parameterTypeRef="bool_t" />
@@ -798,6 +805,9 @@
             <Parameter name="MOTION_gyro_x" parameterTypeRef="int16_degps_from_cdegps_t" />
             <Parameter name="MOTION_gyro_y" parameterTypeRef="int16_degps_from_cdegps_t" />
             <Parameter name="MOTION_gyro_z" parameterTypeRef="int16_degps_from_cdegps_t" />
+            <Parameter name="MOTION_magn_x" parameterTypeRef="int16_uT_t" />
+            <Parameter name="MOTION_magn_y" parameterTypeRef="int16_uT_t" />
+            <Parameter name="MOTION_magn_z" parameterTypeRef="int16_uT_t" />
             <Parameter name="MOTION_tilt" parameterTypeRef="int16_deg_from_cdeg_t" />
             <Parameter name="MOTION_g" parameterTypeRef="int16_G_from_mG_t" />
             <Parameter name="MOTION_a" parameterTypeRef="int16_cmps2_from_mps2_t" />
@@ -1015,6 +1025,7 @@
                     <ParameterRefEntry parameterRef="ESP32_serial_out_buffer" />
                     <ParameterRefEntry parameterRef="ESP32_mem_free" />
                     <ParameterRefEntry parameterRef="ESP32_fs_free" />
+                    <ParameterRefEntry parameterRef="ESP32_temperature" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_yamcs_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_udp_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_wifi_enabled" />
@@ -1027,7 +1038,7 @@
                     <ParameterRefEntry parameterRef="ESP32_free_21" />
                     <ParameterRefEntry parameterRef="ESP32_free_22" />
                     <ParameterRefEntry parameterRef="ESP32_free_23" />
-                    <ParameterRefEntry parameterRef="ESP32_free_24" />
+                    <ParameterRefEntry parameterRef="ESP32_temperature_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_ota_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_ftp_enabled" />
                     <ParameterRefEntry parameterRef="ESP32_fs_enabled" />       
@@ -1190,6 +1201,9 @@
                     <ParameterRefEntry parameterRef="MOTION_gyro_x" />
                     <ParameterRefEntry parameterRef="MOTION_gyro_y" />
                     <ParameterRefEntry parameterRef="MOTION_gyro_z" />
+                    <ParameterRefEntry parameterRef="MOTION_magn_x" />
+                    <ParameterRefEntry parameterRef="MOTION_magn_y" />
+                    <ParameterRefEntry parameterRef="MOTION_magn_z" />
                     <ParameterRefEntry parameterRef="MOTION_tilt" />
                     <ParameterRefEntry parameterRef="MOTION_g" />
                     <ParameterRefEntry parameterRef="MOTION_a" />
@@ -1526,6 +1540,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32_load_config">
                 <LongDescription>Load configuration file on Fli3d ESP32</LongDescription>
                 <BaseMetaCommand metaCommandRef="load_config">
@@ -1537,6 +1552,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32CAM_load_config">
                 <LongDescription>Load configuration file on Fli3d ESP32CAM</LongDescription>
                 <BaseMetaCommand metaCommandRef="load_config">
@@ -1563,6 +1579,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32_load_routing">
                 <LongDescription>Load routing table file on Fli3d ESP32</LongDescription>
                 <BaseMetaCommand metaCommandRef="load_routing">
@@ -1574,6 +1591,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32CAM_load_routing">
                 <LongDescription>Load routing table file on Fli3d ESP32CAM</LongDescription>
                 <BaseMetaCommand metaCommandRef="load_routing">
@@ -1602,6 +1620,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32_set_parameter">
                 <LongDescription>Set parameter value on Fli3d ESP32</LongDescription>
                 <BaseMetaCommand metaCommandRef="set_parameter">
@@ -1613,6 +1632,7 @@
                     <BaseContainer containerRef="CCSDS_TC_container"/>
                 </CommandContainer>
             </MetaCommand>
+            
             <MetaCommand name="ESP32CAM_set_parameter">
                 <LongDescription>Set parameter value on Fli3d ESP32CAM</LongDescription>
                 <BaseMetaCommand metaCommandRef="set_parameter">
@@ -1625,6 +1645,46 @@
                 </CommandContainer>
             </MetaCommand>
 		
+            <MetaCommand name="ESP32_freeze_opsmode">
+                <LongDescription>Freeze operations mode of Fli3d ESP32</LongDescription>
+                <BaseMetaCommand metaCommandRef="CCSDS_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="CCSDS_APID" argumentValue="53"/> 
+                        <ArgumentAssignment argumentName="CCSDS_PacketLength" argumentValue="1"/> 
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument name="freeze" argumentTypeRef="uint8_t"/>
+                </ArgumentList>
+                <CommandContainer name="ESP32_freeze_opsmode">
+                    <EntryList>
+                        <FixedValueEntry binaryValue="2f" sizeInBits="8"/> <!-- cmdId: 47 -->
+                        <ArgumentRefEntry argumentRef="freeze"/>
+                    </EntryList>
+                    <BaseContainer containerRef="CCSDS_TC_container"/>
+                </CommandContainer>
+            </MetaCommand>
+            
+            <MetaCommand name="ESP32CAM_freeze_opsmode">
+                <LongDescription>Freeze operations mode of Fli3d ESP32CAM</LongDescription>
+                <BaseMetaCommand metaCommandRef="CCSDS_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="CCSDS_APID" argumentValue="54"/> 
+                        <ArgumentAssignment argumentName="CCSDS_PacketLength" argumentValue="1"/> 
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument name="freeze" argumentTypeRef="uint8_t"/>
+                </ArgumentList>
+                <CommandContainer name="ESP32CAM_freeze_opsmode">
+                    <EntryList>
+                        <FixedValueEntry binaryValue="2f" sizeInBits="8"/> <!-- cmdId: 47 -->
+                        <ArgumentRefEntry argumentRef="freeze"/>
+                    </EntryList>
+                    <BaseContainer containerRef="CCSDS_TC_container"/>
+                </CommandContainer>
+            </MetaCommand>
+            
         </MetaCommandSet>
 	</CommandMetaData>
 
