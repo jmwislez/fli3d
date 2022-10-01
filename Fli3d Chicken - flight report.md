@@ -77,9 +77,9 @@ The timestamping of the events below is performed by correlation of ON4IR-3 GPS 
 
 ## Post-landing videos
 
-![Fli3d Chicken/VID-20220925-WA0020.mp4](https://github.com/jmwislez/fli3d/blob/master/Fli3d%20Chicken/VID-20220925-WA0020.mp4)
+![Fli3d Chicken/VID-20220925-WA0020.mp4](https://raw.githubusercontent.com/jmwislez/fli3d/master/Fli3d%20Chicken/VID-20220925-WA0020.mp4)
 
-![Fli3d Chicken/VID-20220925-WA0021.mp4](https://github.com/jmwislez/fli3d/blob/master/Fli3d%20Chicken/VID-20220925-WA0021.mp4)
+![Fli3d Chicken/VID-20220925-WA0021.mp4]([https://github.com/jmwislez/fli3d/blob/master/Fli3d%20Chicken/VID-20220925-WA0021.mp4](https://raw.githubusercontent.com/jmwislez/fli3d/master/Fli3d%20Chicken/VID-20220925-WA0021.mp4))
 
 ## System performance assessment
 
