@@ -31,21 +31,11 @@ dataLinks:
     packetPreprocessorArgs:
       timestampOffset: -1
       seqCountOffset: -1
-  - name: esp32-udp-out
+  - name: esp32-udp-out-chicken
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: 151.216.27.137
+    host: 192.168.5.177
     port: 10052
-  - name: esp32-udp-out-test
-    class: org.yamcs.tctm.UdpTcDataLink
-    stream: tc_realtime
-    host: 10.43.54.241
-    port: 10052
-  - name: esp32-udp-out-fli3d-ap
-    class: org.yamcs.tctm.UdpTcDataLink
-    stream: tc_realtime
-    host: 192.168.4.1
-    port: 10052  
   - name: esp32cam-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
@@ -53,21 +43,25 @@ dataLinks:
     packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
     packetPreprocessorArgs:
       timestampOffset: -1
-      seqCountOffset: -1
-  - name: esp32cam-udp-out
+      seqCountOffset: -1    
+  - name: esp32cam-udp-out-chicken
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: 151.216.27.148
-    port: 10053
-  - name: esp32cam-udp-out-test
-    class: org.yamcs.tctm.UdpTcDataLink
-    stream: tc_realtime
-    host: 192.168.2.201
+    host: 192.168.5.164
     port: 10053    
   - name: radio-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     port: 10044
+    packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
+    packetPreprocessorArgs:
+      timestampOffset: -1
+      seqCountOffset: -1
+  - name: tm_file
+    class: org.yamcs.tctm.FilePollingTmDataLink
+    stream: tm_dump
+    incomingDir: C:\Users\jmw\Documents\yamcs-5.7.5\files_for_tm_dump
+    packetInputStreamClassName: org.yamcs.tctm.CcsdsPacketInputStream
     packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
     packetPreprocessorArgs:
       timestampOffset: -1
