@@ -640,7 +640,13 @@
             <Parameter name="CCSDS_Packet_ID" parameterTypeRef="CCSDS_PacketID_t" />
             <Parameter name="CCSDS_Packet_Sequence" parameterTypeRef="CCSDS_PacketSequence_t" />
             <Parameter name="CCSDS_Packet_Length" parameterTypeRef="CCSDS_PacketLength_t" />
-      
+
+            <Parameter name="RX433_millis" parameterTypeRef="uint24_t" />
+            <Parameter name="RX433_packet_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="RX433_speed" parameterTypeRef="uint16_t" />
+            <Parameter name="RX433_good_433_ctr" parameterTypeRef="uint16_t" />
+            <Parameter name="RX433_rx_sts" parameterTypeRef="uint16_t" />
+            
             <Parameter name="STSESP32_millis" parameterTypeRef="uint24_t" />
             <Parameter name="STSESP32_packet_ctr" parameterTypeRef="uint16_t" />
             <Parameter name="STSESP32_type" parameterTypeRef="uint4_event_t" />
@@ -956,6 +962,23 @@
                     </RestrictionCriteria>
                 </BaseContainer>
                 <EntryList />
+            </SequenceContainer>
+            <SequenceContainer name="Fli3d rx433">
+                <BaseContainer containerRef="TelemetryPacket">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
+                            <Comparison value="41" parameterRef="CCSDS_Packet_ID/APID" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="RX433_millis" />
+                    <ParameterRefEntry parameterRef="RX433_packet_ctr" />
+                    <ParameterRefEntry parameterRef="RX433_speed" />
+                    <ParameterRefEntry parameterRef="RX433_good_433_ctr" />
+                    <ParameterRefEntry parameterRef="RX433_rx_sts" />
+                </EntryList>
             </SequenceContainer>
             <SequenceContainer name="Fli3d sts_esp32">
                 <BaseContainer containerRef="TelemetryPacket">

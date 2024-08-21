@@ -31,11 +31,31 @@ dataLinks:
     packetPreprocessorArgs:
       timestampOffset: -1
       seqCountOffset: -1
-  - name: esp32-udp-out-chicken
+  - name: esp32-udp-out-fli3d
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
     host: 192.168.5.177
     port: 10052
+  - name: esp32-udp-out-AndroidAP2CDC
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.133.98
+    port: 10052
+  - name: esp32-udp-out-wrt54
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.10.3
+    port: 10052
+  - name: esp32-udp-out-wlan-27
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.184
+    port: 10052   
+  - name: esp32-udp-out-fri3d-legacy
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.184
+    port: 10052       
   - name: esp32cam-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
@@ -44,11 +64,31 @@ dataLinks:
     packetPreprocessorArgs:
       timestampOffset: -1
       seqCountOffset: -1    
-  - name: esp32cam-udp-out-chicken
+  - name: esp32cam-udp-out-fli3d
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: 192.168.5.164
-    port: 10053    
+    host: 192.168.5.177
+    port: 10053
+  - name: esp32cam-udp-out-AndroidAP2CDC
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.133.98
+    port: 10053
+  - name: esp32cam-udp-out-wrt54
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.10.3
+    port: 10053
+  - name: esp32cam-udp-out-wlan-27
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.199
+    port: 10053   
+  - name: esp32cam-udp-out-fri3d-legacy
+    class: org.yamcs.tctm.UdpTcDataLink
+    stream: tc_realtime
+    host: 192.168.2.184
+    port: 10053          
   - name: radio-udp-in
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
