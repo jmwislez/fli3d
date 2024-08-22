@@ -17,6 +17,8 @@ Despite the problems, a load of interesting engineering data and experience were
 | Crash    | 25/09/2022 17:39:58 UTC<br />in a field near Eppe-Sauvage, France (76.86 km distance), at 65 km/h |
 | Duration | Ascent: 2h08m03s<br />Descent: 13m25s<br />Total: 2h21m28s |
 
+[[Fli3d Chicken photo album](https://photos.app.goo.gl/S38xrLcGTVrPPzQt9)]
+
 ## Pre-flight preparations
 
 ### Set-up and operational approach
