@@ -2,6 +2,8 @@
 ## Main flight characteristics
 Fli3d Aubergine was the first flight of the Fli3d payload on a microrocket.  It was the second flight of the Fli3d electronics. [Click here](https://github.com/jmwislez/fli3d/blob/master/README.md#flights) for an overview of the flights and their naming.
 
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Fli3d%20Aubergine%20-%20logo.png" align="right">
+
 | Characteristic | Value |
 | - | - |
 | Launch date / time | 18-Aug-2024 12:41 CEST |
@@ -14,6 +16,7 @@ Fli3d Aubergine was the first flight of the Fli3d payload on a microrocket.  It 
 | Parachute | 45 cm by Klima |
 | Fin: | 3D printed (3) |
 | Stability number | 4.94 calibre |
+
 
 [[Fli3d Aubergine photo album](https://photos.app.goo.gl/HriTFwFs2qNNNqe7A)]
 
@@ -45,10 +48,18 @@ The reason for the horizontal flight is twofold.  With the weight of the rocket,
 
 ## Recovery
 Despite searching attempts, the rocket could not be found back after flight.  The search area was too large, with large trees and brambles, with no visual hint on where to concentrate the search.
-[map]
+
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Aubergine%20flight%20path.png" align="center">
+<em>Approximate flight path and landing area</em>
+
 
 ## Telemetry analysis
-[screenshot]
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Yamcs%20TM%20screen.png">
+<em>Yamcs telemetry screen before flight</em>
+<p> </p>
+
 Yamcs performed very well, and properly recorded all telemetry received.  From this, the following can be observed:
 *	The rocket systems are booted at 10:32:17 UTC. All systems are nominal during the preparation phase, with the exception of known anomalies.
 *	The camera starts acquiring at 10:36:42 UTC.
@@ -62,7 +73,15 @@ Yamcs performed very well, and properly recorded all telemetry received.  From t
 *	According to the datestamp of a picture taken by Jan De Bleser, the launch is at 12:41 local time, 10:41 UTC.
 *	To my surprise, the telemetry archive contains a last packet received at 10:44:28 UTC, by when the rocket has landed already.  The telemetry does not contain much useful data, but it shows a static rocket with separation activated!  So the rocket still worked after landing, and 433.700 MHz radio did work over a longer distance (likely 100-200m).  The radio environment was just too noisy to receive more packets.
 With the rocket unrecovered and Wi-Fi contact lost, the onboard telemetry could not be retrieved.  If the rocket is found by accident and returns to me by miracle, it may still be recoverable.
-[graphs of TM]
+
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/TM%20highlights.png" align="center">
+<em>Yamcs telemetry archive, with main events</em>
+<p> </p>
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Data%20from%20last%20TM%20packet.png">
+<em>The last packet received, from after landing</em>
+
 
 ## Lessons Learnt
 I compiled a detailed list of lessons learnt to guide the design of Fli3d Payload v2 towards future flights, but these are the main ones:
