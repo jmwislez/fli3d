@@ -47,12 +47,17 @@ The rocket left the launch pad properly and had a stable flight, which was a gre
 The reason for the horizontal flight is twofold.  With the weight of the rocket, the launch pad rod bent, which accounted for a larger launch pitch than the smaller rockets.  The main factor is however that I designed the rocket to be significantly “overstable”, in fear of instability when leaving the launch rod.  With this feature, the rocket has a strong tendency to orient itself towards the wind, which is horizontal. 
 
 ## Recovery
-Despite searching attempts, the rocket could not be found back after flight.  The search area was too large, with large trees and brambles, with no visual hint on where to concentrate the search.
+Despite searching attempts, the rocket could not be found back after the flight.  The search area was too large, with large trees and brambles, with no visual hint on where to concentrate the search.
 
 
 <img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Aubergine%20flight%20path.png" align="center">
 <em>Approximate flight path and landing area</em>
 
+After Fri3d Camp I made a poster which was hung there by staff from De Kluis and by Wouter Wuyts.  A few days later, I got a message from Sebastiaan Vileijn who had found the parachute hanging high in the trees at following coordinates: 50.801579 north,4.663138 east.  A few days later, he went back with binoculars and confirmed the rocket tube is hanging there too.  At the foot of the tree he found the fins.  It is not yet confirmed that the rocket nose is also in the tree, but I consider that probable.  I will be going there myself soon, and attempt a recovery with David Steeman.
+
+
+<img src="https://github.com/jmwislez/fli3d/blob/master/Fli3d Aubergine/Aubergine%20rocket%20found.png" align="center">
+<em>Location at which rocket is hanging in a tree</em>
 
 ## Telemetry analysis
 
