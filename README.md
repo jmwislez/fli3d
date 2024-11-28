@@ -31,7 +31,7 @@ A v2 version is under development with significantly improved functionality and 
 
 To date, the payload has not flown yet.  It is hoped to do one or more test flights before Fri3d Camp in August 2020, and one or more demo flights at Fri3d Camp.
 
-Each flight will be designated through a successive starting letter, and have a corresponding name (another cheesy reference to the Chinese electronics used):
+Each flight will be designated through a successive starting letter, and have a corresponding name:
   - Fli3d Aubergine [flew 18-Aug-2024 on a C-motor microrocket](https://github.com/jmwislez/fli3d/blob/master/Fli3d%20Aubergine%20-%20flight%20report.md)
   - Fli3d Banana 
   - Fli3d Chicken ([flew 25-Sep-2022 on a weather balloon](https://github.com/jmwislez/fli3d/blob/master/Fli3d%20Chicken%20-%20flight%20report.md))
