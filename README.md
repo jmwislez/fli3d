@@ -6,13 +6,13 @@ Fli3d (pronounced "flight") is a project by Jean-Marc Wislez for the 2020 (well,
 
 <img src="https://github.com/jmwislez/fli3d/blob/master/Hardware/Structure/fli3d%20full%20v4.2%20-%201.png" width="800px">
 
-The name is obviously derived from "Fri3d Camp", and hints to the "Chinese electronics" used to build it.
+The name is obviously derived from "Fri3d Camp", and from the fact it's "flight hardware".
 
 I have been working in the space industry for more than 20 years now, and this included design, building, testing and operations of payloads on Shuttle missions and ISS.  Basically I used this experience and the typical approaches here, but doing everything myself instead of collaborating in large teams.
 
 ## Overview
 
-The Fli3d payload has roughly the size of a toilet paper roll, and weighs less than 100g.  Hardware costs for one unit are below 25 euros.  The payload is intended for launch on a microrocket with minimally a B-motor.  The payload contains the following:
+The Fli3d payload has roughly the size of a toilet paper roll, and weighs less than 100g.  Hardware costs for one v1 unit are below 25 euros.  The payload is intended for launch on a microrocket with minimally a B-motor.  The payload contains the following:
   - a 3D-printed structure and fairing
   - an ESP32 minikit MH-ET microprocessor board, running custom software (developed in Arduino IDE) to control all Fli3d subsystems and transmit live telemetry and receive commands over WiFi
   - an MPU6050 accelerometer/gyroscope sensor unit for determining accelerations and orientation
@@ -24,6 +24,8 @@ The Fli3d payload has roughly the size of a toilet paper roll, and weighs less t
   - separation detection, for detection of opening of parachute compartment
   
 All flight data is to be monitored live on a ground computer running Yamcs (open source software developed for ISS payload and satellite operations), and to be retrievable after flight, both physically and through file transfer.
+
+A v2 version is under development with significantly improved functionality and also easier to assemble and test.  More information will be available soon ...
 
 ## Flights
 
